@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[test]]></title>
+    <url>%2F2018%2F04%2F14%2Ftest%2F</url>
+    <content type="text"><![CDATA[$e$]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[[NOIP2017 D1 T1] 小凯的疑惑（数论）]]></title>
+    <url>%2F2018%2F04%2F14%2FNOIP2017-D1-T1-%E5%B0%8F%E5%87%AF%E7%9A%84%E7%96%91%E6%83%91%EF%BC%88%E6%95%B0%E8%AE%BA%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[题目描述小凯手中有两种面值的金币，两种面值均为正整数且彼此互素。每种金币小凯都有 无数个。在不找零的情况下，仅凭这两种金币，有些物品他是无法准确支付的。 现在小凯想知道在无法准确支付的物品中，最贵的价值是多少金币？注意：输入数据保证存在小凯无法准确支付的商品。 输入输入数据仅一行，包含两个正整数 $a$ 和 $ b $，它们之间用一个空格隔开，表示小凯手 中金币的面值。 输出输出文件仅一行，一个正整数 $ N $，表示不找零的情况下，小凯用手中的金币不能准确支付的最贵的物品的价值。 样例输入13 7 样例输出111 样例说明小凯手中有面值为3和7的金币无数个，在不找零的前提下无法准确支付价值为1、 2、4、5、8、11 的物品，其中最贵的物品价值为 11，比 11 贵的物品都能买到，比如：$ 12 = 3 \times 4 + 7 \times 0 $$ 13 = 3 \times 2 + 7 \times 1 $$ 14 = 3 \times 0 + 7 \times 2 $$ 15 = 3 \times 5 + 7 \times 0 $ 数据范围与约定对于 30%的数据： $ 1 \le a,b \le 50 $。对于 60%的数据： $ 1 \le a,b \le 10^4 $。对于 100%的数据：$ 1 \le a,b \le 10^9 $。 解题思路因为$ (a,b) = 1 $，所以$ {a, 2a, 3a, …, (b-1)a} $为模$ b $的完全剩余系。设$ T $是一个$ a, b $无法表示的数且$ T \equiv ka(mod \ b) $，$ (1 \le k \le b-1) $.若$ T \ge ka $，则$ T $一定可以表示为$ ka+nb $，$ (n \ge 0) $，所以$ T &lt; ka $，则此时$ T $最大为$ ka-b $.显然，当$ k $最大时$ T $最大，所以$ T = (b-1)a-b = ab - a - b $. Code123456789#include&lt;cstdio&gt;using namespace std;typedef long long LL;LL a, b;int main()&#123; scanf("%lld%lld", &amp;a, &amp;b); printf("%lld", a * b - a - b); return 0;&#125;]]></content>
+      <categories>
+        <category>数学-数论</category>
+      </categories>
+      <tags>
+        <tag>OI</tag>
+        <tag>NOIP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello, world!]]></title>
     <url>%2F2018%2F04%2F07%2FHello-world-0%2F</url>
     <content type="text"><![CDATA[搞了一个下午+一个晚上，终于把hexo+github博客搭建起来了……（尚待后续优化） 这个博客用于几个板块：OI/ACM 学习笔记（主要），学习总结，随笔，其他 12break?continue!]]></content>
