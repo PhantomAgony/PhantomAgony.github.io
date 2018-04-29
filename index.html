@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="_en">
+<html class="theme-next pisces use-motion" lang="_en">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -75,7 +75,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '6.1.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
@@ -328,6 +328,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/29/ZJOI2008-树的统计（树链剖分，线段树）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="PhantomAgony">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PhantomAgony">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/29/ZJOI2008-树的统计（树链剖分，线段树）/" itemprop="url">[ZJOI2008]树的统计（树链剖分，线段树）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-29T13:57:26+08:00">2018-04-29</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OI/" itemprop="url" rel="index"><span itemprop="name">OI</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OI/ZJOI/" itemprop="url" rel="index"><span itemprop="name">ZJOI</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>一棵树上有n个节点，编号分别为1到n，每个节点都有一个权值w。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/29/ZJOI2008-树的统计（树链剖分，线段树）/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/28/SDOI2011-染色（树链剖分，线段树）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -422,7 +575,7 @@
 
       
         
-          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给定一棵有n个节点的无根树和m个操作，操作有2类：<br>1、将节点a到节点b路径上所有点都染成颜色c；<br>2、询问节点a到节点b路径上的颜色段数量（连续相同颜色被认为是同一段），<br>如“112221”由3段组成：“11”、“222”和“1”。<br>请你写一个程序依次完成这m个操作。<br>
+          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给定一棵有n个节点的无根树和m个操作，操作有2类：
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/28/SDOI2011-染色（树链剖分，线段树）/#more" rel="contents">
@@ -575,8 +728,7 @@
 
       
         
-          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>点分治主要解决<strong>树上路径问题</strong>，其主要思想是把一颗有根树以根为分治点分为一个森林（其实就是各个子树），解决经过当前根的路径后在子树里继续分治，从而将问题“分而治之”。</p>
-<p>这里面，根的选择非常重要。为了保证复杂度，我们的分治点应该尽可能的“居中”，所以分治点一般选择正在处理的树的重心。<br>
+          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>点分治主要解决<strong>树上路径问题</strong>，其主要思想是把一颗有根树以根为分治点分为一个森林（其实就是各个子树）
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/22/点分治学习笔记/#more" rel="contents">
@@ -729,7 +881,7 @@
 
       
         
-          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>小明正在学习一种新的编程语言 A++，刚学会循环语句的他激动地写了好多程序并 给出了他自己算出的时间复杂度，可他的编程老师实在不想一个一个检查小明的程序， 于是你的机会来啦！下面请你编写程序来判断小明对他的每个程序给出的时间复杂度是否正确。
+          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>小明正在学习一种新的编程语言 A++，刚学会循环语句的他激动地写了好多程序并 给出了他自己算出的时间复杂度，
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/14/NOIP2017-D1-T2-时间复杂度（栈，模拟）/#more" rel="contents">
@@ -882,7 +1034,7 @@
 
       
         
-          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>小凯手中有两种面值的金币，两种面值均为正整数且彼此互素。每种金币小凯都有 无数个。在不找零的情况下，仅凭这两种金币，有些物品他是无法准确支付的。现在小凯想知道在无法准确支付的物品中，最贵的价值是多少金币？注意：输入数据保证存在小凯无法准确支付的商品。<br>
+          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>小凯手中有两种面值的金币，两种面值均为正整数且彼此互素。每种金币小凯都有 无数个。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/14/NOIP2017-D1-T1-小凯的疑惑（数论）/#more" rel="contents">
@@ -1241,7 +1393,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1264,7 +1416,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1371,7 +1525,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.1.0</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.1.0</div>
 
 
 
@@ -1844,6 +1998,8 @@
     
       
         
+      
+    
       
     
       
