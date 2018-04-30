@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="_en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="普通平衡树/文艺平衡树/二逼平衡树">
+<meta name="keywords" content="BZOJ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="普通平衡树&#x2F;文艺平衡树&#x2F;二逼平衡树">
+<meta property="og:url" content="http://yoursite.com/2018/04/30/普通平衡树-文艺平衡树-二逼平衡树/index.html">
+<meta property="og:site_name" content="PhantomAgony">
+<meta property="og:description" content="普通平衡树/文艺平衡树/二逼平衡树">
+<meta property="og:locale" content="_en">
+<meta property="og:image" content="http://yoursite.com/img/splay.png">
+<meta property="og:updated_time" content="2018-04-30T07:00:29.941Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="普通平衡树&#x2F;文艺平衡树&#x2F;二逼平衡树">
+<meta name="twitter:description" content="普通平衡树/文艺平衡树/二逼平衡树">
+<meta name="twitter:image" content="http://yoursite.com/img/splay.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/30/普通平衡树-文艺平衡树-二逼平衡树/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>普通平衡树/文艺平衡树/二逼平衡树 | PhantomAgony</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="_en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">PhantomAgony</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-categories menu-item-active">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+</li>
+
+      
+        
+        
+          
+  
+  <li class="menu-item menu-item-links">
+    <a href="/links" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-link"></i> <br />Links</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/30/普通平衡树-文艺平衡树-二逼平衡树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="PhantomAgony">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PhantomAgony">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">普通平衡树/文艺平衡树/二逼平衡树</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-30T12:22:21+08:00">2018-04-30</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/平衡树/" itemprop="url" rel="index"><span itemprop="name">平衡树</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">普通平衡树/文艺平衡树/二逼平衡树</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/img/splay.png" rel="gallery_cjglz8x5j000ppsfmbcuzniu9"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/img/splay.png" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h1 id="普通平衡树"><a href="#普通平衡树" class="headerlink" title="普通平衡树"></a>普通平衡树</h1><p>题目链接：<br><a href="https://www.luogu.org/problemnew/show/3369" target="_blank" rel="noopener">luogu3369</a><br><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3224" target="_blank" rel="noopener">bzoj3224</a></p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>平衡树模板题，我分别用了 [非旋Treap] 和 [Splay] AC了本题。</p>
+<h3 id="一、Splay"><a href="#一、Splay" class="headerlink" title="一、Splay"></a>一、Splay</h3><p>每个节点表示一个值，同时记录该点及其子树大小、该点表示的值的出现次数、左右儿子、父节点。</p>
+<ul>
+<li>插入：将x前驱旋至根，x后继旋至根的右儿子，那么根的左儿子的右儿子即为要插入的位置，如果此位置上无数，则新建一个节点；否则该位置的出现次数和大小加1。<ul>
+<li><strong>注意：为了避免找不到x前驱和后继，应事先插入一个值为-INF和值为INF的节点。</strong></li>
+</ul>
+</li>
+<li>删除：将x前驱旋至根，x后继旋至根的右儿子，那么根的左儿子的右儿子即为要删除的节点，如果此节点大小为1，直接删除；否则该位置的出现次数和大小减1。</li>
+<li>查x排名：将x旋至根，则x排名为根的左儿子大小+1</li>
+<li>查排名为x的数：从根向下查找，如果当前节点的左儿子大小+1=x，则返回当前节点的值；否则，如果当前节点的左儿子大小$\geq$x，则向其右儿子查找；否则，向其左儿子查找。</li>
+<li>求x前驱：从根向下查找，如果当前节点的值小于等于x，更新ans并向其右儿子查找；否则，向其左儿子查找。更新时，不断取max即可。</li>
+<li>求x后继：从根向下查找，如果当前节点的值大于等于x，更新ans并向其左儿子查找；否则，向其右儿子查找。更新时，不断取min即可。</li>
+</ul>
+<p>时间复杂度：每次操作 $O(log_2n)$</p>
+<h4 id="Code-1"><a href="#Code-1" class="headerlink" title="Code#1"></a>Code#1</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x7fffffff</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">int</span> n, opt, q;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>, root = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Splay_tree</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> fa, son[<span class="number">2</span>], size, val, times;</span><br><span class="line">&#125;tr[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x)&#123;</span><br><span class="line">        tr[x].size = tr[x].times;</span><br><span class="line">        <span class="keyword">if</span>(tr[x].son[<span class="number">0</span>])	tr[x].size += tr[tr[x].son[<span class="number">0</span>]].size;</span><br><span class="line">        <span class="keyword">if</span>(tr[x].son[<span class="number">1</span>])	tr[x].size += tr[tr[x].son[<span class="number">1</span>]].size;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> kind)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> y = tr[x].fa, z = tr[y].fa, A = tr[y].son[kind], B = tr[x].son[kind], C = tr[x].son[!kind];</span><br><span class="line">    tr[x].son[kind] = y, tr[x].fa = z;</span><br><span class="line">    tr[y].son[!kind] = B, tr[y].fa = x, tr[B].fa = y;</span><br><span class="line">    tr[z].son[tr[z].son[<span class="number">1</span>] == y] = x;</span><br><span class="line">    pushup(y), pushup(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> goal)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x == goal)	<span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">while</span>(tr[x].fa != goal)&#123;</span><br><span class="line">        <span class="keyword">int</span> y = tr[x].fa, z = tr[y].fa;</span><br><span class="line">        <span class="keyword">int</span> isrson1 = tr[y].son[<span class="number">1</span>] == x, isrson2 = tr[z].son[<span class="number">1</span>] == y;</span><br><span class="line">        <span class="keyword">if</span>(z == goal)	rotate(x, !isrson1);</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(isrson1 == isrson2)	rotate(y, !isrson2);</span><br><span class="line">            <span class="keyword">else</span>	rotate(x, !isrson1);</span><br><span class="line">            rotate(x, !isrson2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(goal == <span class="number">0</span>)	root = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">select</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> now = root;</span><br><span class="line">    <span class="keyword">while</span>(now)&#123;</span><br><span class="line">        <span class="keyword">if</span>(tr[now].val == x)	<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(tr[now].val &lt; x)	now = tr[now].son[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(tr[now].val &gt; x)	now = tr[now].son[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!now)	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> now;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getPre</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> now = root, ans = -INF;</span><br><span class="line">    <span class="keyword">while</span>(now)&#123;</span><br><span class="line">        <span class="keyword">if</span>(tr[now].val &lt; x)&#123;</span><br><span class="line">            ans = max(ans, tr[now].val);</span><br><span class="line">            now = tr[now].son[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>	now = tr[now].son[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getSub</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> now = root, ans = INF;</span><br><span class="line">    <span class="keyword">while</span>(now)&#123;</span><br><span class="line">        <span class="keyword">if</span>(tr[now].val &gt; x)&#123;</span><br><span class="line">            ans = min(ans, tr[now].val);</span><br><span class="line">            now = tr[now].son[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>	now = tr[now].son[<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getRank</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> now = root, ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(now)&#123;</span><br><span class="line">        <span class="keyword">if</span>(tr[now].val == x)&#123;</span><br><span class="line">            ans += tr[tr[now].son[<span class="number">0</span>]].size + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(tr[now].val &lt; x)&#123;</span><br><span class="line">            ans += tr[tr[now].son[<span class="number">0</span>]].size + tr[now].times;</span><br><span class="line">            now = tr[now].son[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>	now = tr[now].son[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">newNode</span><span class="params">(<span class="keyword">int</span> val, <span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    ++cnt;</span><br><span class="line">    tr[cnt].val = val;</span><br><span class="line">    tr[cnt].fa = f;</span><br><span class="line">    tr[cnt].son[<span class="number">0</span>] = tr[cnt].son[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    tr[cnt].size = tr[cnt].times = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    splay(select(getPre(x)), <span class="number">0</span>);</span><br><span class="line">    splay(select(getSub(x)), root);</span><br><span class="line">    <span class="keyword">int</span> t = tr[tr[root].son[<span class="number">1</span>]].son[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">if</span>(!t)</span><br><span class="line">        tr[tr[root].son[<span class="number">1</span>]].son[<span class="number">0</span>] = newNode(x, tr[root].son[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">else</span>	tr[t].times++, tr[t].size++;</span><br><span class="line">    pushup(tr[root].son[<span class="number">1</span>]);</span><br><span class="line">    pushup(root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    splay(select(getPre(x)), <span class="number">0</span>);</span><br><span class="line">    splay(select(getSub(x)), root);</span><br><span class="line">    <span class="keyword">int</span> t = tr[tr[root].son[<span class="number">1</span>]].son[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">if</span>(!t || tr[t].times == <span class="number">0</span>)	<span class="keyword">return</span>;</span><br><span class="line">    tr[t].times--, tr[t].size--;</span><br><span class="line">    <span class="keyword">if</span>(tr[t].times == <span class="number">0</span>)	tr[tr[root].son[<span class="number">1</span>]].son[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    pushup(tr[root].son[<span class="number">1</span>]);</span><br><span class="line">    pushup(root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">findRank</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> now = root;</span><br><span class="line">    <span class="keyword">while</span>(now)&#123;</span><br><span class="line">        <span class="keyword">if</span>(tr[tr[now].son[<span class="number">0</span>]].size + <span class="number">1</span> &lt;= x &amp;&amp; x &lt;= tr[tr[now].son[<span class="number">0</span>]].size + tr[now].times)	<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(tr[tr[now].son[<span class="number">0</span>]].size + <span class="number">1</span> &gt; x)</span><br><span class="line">            now = tr[now].son[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(tr[tr[now].son[<span class="number">0</span>]].size + tr[now].times &lt; x)&#123;</span><br><span class="line">            x -= tr[tr[now].son[<span class="number">0</span>]].size + tr[now].times;</span><br><span class="line">            now = tr[now].son[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tr[now].val;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    root = newNode(-INF, <span class="number">0</span>);</span><br><span class="line">    tr[root].son[<span class="number">1</span>] = newNode(INF, root), pushup(root);</span><br><span class="line">    <span class="keyword">while</span>(n--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;opt, &amp;q);</span><br><span class="line">        <span class="keyword">if</span>(opt == <span class="number">1</span>)	insert(q);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">2</span>)	del(q);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">3</span>)	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, getRank(q));</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">4</span>)	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, findRank(q+<span class="number">1</span>));</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">5</span>)	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, getPre(q));</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">6</span>)	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, getSub(q));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二、非旋Treap"><a href="#二、非旋Treap" class="headerlink" title="二、非旋Treap"></a>二、非旋Treap</h3><p>每个节点表示一个值，同时记录该点及其子树大小、左右儿子。</p>
+<ul>
+<li>插入：从x处split，新建一个值为x的节点，再将三部分merge起来。（注：从x处分开：x在前一部分，下同）</li>
+<li>删除：从x、x+1处split成三部分（记为l、t、r），将t的左右儿子merge起来，这样就删除了一个节点，再将三部分merge起来。</li>
+<li>查x排名：从x-1处split，则x排名为前一部分的大小+1</li>
+<li>查排名为x的数：同Splay</li>
+<li>求x前驱：同Splay</li>
+<li>求x后继：同Splay</li>
+</ul>
+<p>时间复杂度：每次操作 $O(log_2n)$</p>
+<h4 id="Code-2"><a href="#Code-2" class="headerlink" title="Code#2"></a>Code#2</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">1e9</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">int</span> n, opt, q;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Treap</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> val, son[<span class="number">2</span>], size, hp;</span><br><span class="line">&#125;tr[N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">OPT_Treap</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> cnt, root;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">newNode</span><span class="params">(<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">		cnt++;</span><br><span class="line">		tr[cnt].val = val;</span><br><span class="line">		tr[cnt].hp = rand();</span><br><span class="line">		tr[cnt].son[<span class="number">0</span>] = tr[cnt].son[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">		tr[cnt].size = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> cnt;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">		tr[id].size = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(tr[id].son[<span class="number">0</span>])	tr[id].size += tr[tr[id].son[<span class="number">0</span>]].size;</span><br><span class="line">		<span class="keyword">if</span>(tr[id].son[<span class="number">1</span>])	tr[id].size += tr[tr[id].son[<span class="number">1</span>]].size;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(a == <span class="number">0</span>)	<span class="keyword">return</span> b;</span><br><span class="line">		<span class="keyword">if</span>(b == <span class="number">0</span>)	<span class="keyword">return</span> a;</span><br><span class="line">		<span class="keyword">if</span>(tr[a].hp &lt;= tr[b].hp)&#123;</span><br><span class="line">			pushdown(a);</span><br><span class="line">			tr[a].son[<span class="number">1</span>] = merge(tr[a].son[<span class="number">1</span>], b);</span><br><span class="line">			pushup(a);</span><br><span class="line">			<span class="keyword">return</span> a;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			pushdown(b);</span><br><span class="line">			tr[b].son[<span class="number">0</span>] = merge(a, tr[b].son[<span class="number">0</span>]);</span><br><span class="line">			pushup(b);</span><br><span class="line">			<span class="keyword">return</span> b;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">split</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> k, <span class="keyword">int</span> &amp;x, <span class="keyword">int</span> &amp;y)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(!id)&#123;</span><br><span class="line">			x = <span class="number">0</span>, y = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		pushdown(id);</span><br><span class="line">		<span class="keyword">if</span>(tr[id].val &gt; k)</span><br><span class="line">			y = id, split(tr[id].son[<span class="number">0</span>], k, x, tr[id].son[<span class="number">0</span>]);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			x = id, split(tr[id].son[<span class="number">1</span>], k, tr[id].son[<span class="number">1</span>], y);</span><br><span class="line">		pushup(id);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> l = <span class="number">0</span>, r = <span class="number">0</span>;</span><br><span class="line">		split(root, val, l, r);</span><br><span class="line">		<span class="keyword">int</span> t = newNode(val);</span><br><span class="line">		root = merge(merge(l, t), r);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> l = <span class="number">0</span>, r = <span class="number">0</span>, t = <span class="number">0</span>;</span><br><span class="line">		split(root, val - <span class="number">1</span>, l, t);</span><br><span class="line">		split(t, val, t, r);</span><br><span class="line">		t = merge(tr[t].son[<span class="number">0</span>], tr[t].son[<span class="number">1</span>]);</span><br><span class="line">		root = merge(merge(l, t), r);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getRank</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> ans = <span class="number">0</span>, l = <span class="number">0</span>, r = <span class="number">0</span>;</span><br><span class="line">		split(root, x<span class="number">-1</span>, l, r);</span><br><span class="line">		ans = tr[l].size + <span class="number">1</span>;</span><br><span class="line">		root = merge(l, r);</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getKth</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> now = root;</span><br><span class="line">		<span class="keyword">while</span>(now)&#123;</span><br><span class="line">			<span class="keyword">if</span>(tr[tr[now].son[<span class="number">0</span>]].size + <span class="number">1</span> == k)	<span class="keyword">return</span> tr[now].val;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(tr[tr[now].son[<span class="number">0</span>]].size &gt;= k)	now = tr[now].son[<span class="number">0</span>];</span><br><span class="line">			<span class="keyword">else</span>	k -= (tr[tr[now].son[<span class="number">0</span>]].size + <span class="number">1</span>), now = tr[now].son[<span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> -INF;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getPre</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> ans = -INF, now = root;</span><br><span class="line">		<span class="keyword">while</span>(now)&#123;</span><br><span class="line">			<span class="keyword">if</span>(tr[now].val &gt;= x)	now = tr[now].son[<span class="number">0</span>];</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				ans = max(ans, tr[now].val);</span><br><span class="line">				now = tr[now].son[<span class="number">1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getSub</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> ans = INF, now = root;</span><br><span class="line">		<span class="keyword">while</span>(now)&#123;</span><br><span class="line">			<span class="keyword">if</span>(tr[now].val &lt;= x)	now = tr[now].son[<span class="number">1</span>];</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				ans = min(ans, tr[now].val);</span><br><span class="line">				now = tr[now].son[<span class="number">0</span>];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;BST;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	srand(<span class="number">200127</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	BST.root = BST.newNode(INF);</span><br><span class="line">	<span class="keyword">while</span>(n--)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;opt, &amp;q);</span><br><span class="line">		<span class="keyword">if</span>(opt == <span class="number">1</span>)	BST.insert(q);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">2</span>)	BST.del(q);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">3</span>)	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, BST.getRank(q));</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">4</span>)	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, BST.getKth(q));</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">5</span>)	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, BST.getPre(q));</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">6</span>)	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, BST.getSub(q));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="文艺平衡树"><a href="#文艺平衡树" class="headerlink" title="文艺平衡树"></a>文艺平衡树</h1><p>题目链接：<br><a href="https://www.luogu.org/problemnew/show/3391" target="_blank" rel="noopener">luogu3391</a><br><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3223" target="_blank" rel="noopener">bzoj3223</a></p>
+<h2 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="一、Splay-1"><a href="#一、Splay-1" class="headerlink" title="一、Splay"></a>一、Splay</h3><p>这道题只有区间翻转操作，线段树不好维护，只有用平衡树了。<br>对于一次$[l,r]$的区间翻转，把$l-1$旋至根，$r+1$旋至根的右儿子，那么$[l,r]$就在根的右儿子的左儿子处了。和线段树一样，我们可以将它的左右儿子互换后打上一个翻转标记(rev ^= 1)，之后再pushdown。</p>
+<h4 id="Code-3"><a href="#Code-3" class="headerlink" title="Code#3"></a>Code#3</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x7fffffff</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">int</span> n, m, ql, qr;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> cnt, root;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Splay_tree</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> fa, son[<span class="number">2</span>], size, val;</span><br><span class="line">    <span class="keyword">bool</span> rev;</span><br><span class="line">&#125;tr[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x)&#123;</span><br><span class="line">        tr[x].size = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(tr[x].son[<span class="number">0</span>])	tr[x].size += tr[tr[x].son[<span class="number">0</span>]].size;</span><br><span class="line">        <span class="keyword">if</span>(tr[x].son[<span class="number">1</span>])	tr[x].size += tr[tr[x].son[<span class="number">1</span>]].size;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(tr[x].rev)&#123;</span><br><span class="line">        <span class="keyword">if</span>(tr[x].son[<span class="number">0</span>])&#123;</span><br><span class="line">            tr[tr[x].son[<span class="number">0</span>]].rev ^= <span class="number">1</span>;</span><br><span class="line">            swap(tr[tr[x].son[<span class="number">0</span>]].son[<span class="number">0</span>], tr[tr[x].son[<span class="number">0</span>]].son[<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(tr[x].son[<span class="number">1</span>])&#123;</span><br><span class="line">            tr[tr[x].son[<span class="number">1</span>]].rev ^= <span class="number">1</span>;</span><br><span class="line">            swap(tr[tr[x].son[<span class="number">1</span>]].son[<span class="number">0</span>], tr[tr[x].son[<span class="number">1</span>]].son[<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        tr[x].rev = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> kind)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> y = tr[x].fa, z = tr[y].fa, A = tr[y].son[kind], B = tr[x].son[kind], C = tr[x].son[!kind];</span><br><span class="line">    tr[x].son[kind] = y, tr[x].fa = z;</span><br><span class="line">    tr[y].son[!kind] = B, tr[y].fa = x;</span><br><span class="line">    tr[z].son[tr[z].son[<span class="number">1</span>] == y] = x;</span><br><span class="line">    tr[B].fa = y;</span><br><span class="line">    pushup(y), pushup(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> goal)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x == goal)	<span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">while</span>(tr[x].fa != goal)&#123;</span><br><span class="line">        <span class="keyword">int</span> y = tr[x].fa, z = tr[y].fa;</span><br><span class="line">        pushdown(z), pushdown(y), pushdown(x);</span><br><span class="line">        <span class="keyword">int</span> isrson1 = tr[y].son[<span class="number">1</span>] == x, isrson2 = tr[z].son[<span class="number">1</span>] == y;</span><br><span class="line">        <span class="keyword">if</span>(z == goal)	rotate(x, !isrson1);</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(isrson1 == isrson2)	rotate(y, !isrson2);</span><br><span class="line">            <span class="keyword">else</span>	rotate(x, !isrson1);</span><br><span class="line">            rotate(x, !isrson2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(goal == <span class="number">0</span>)	root = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">newNode</span><span class="params">(<span class="keyword">int</span> val, <span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    cnt++;</span><br><span class="line">    tr[cnt].val = val;</span><br><span class="line">    tr[cnt].fa = f;</span><br><span class="line">    tr[cnt].son[<span class="number">0</span>] = tr[cnt].son[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    tr[cnt].size = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">select</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> now = root;</span><br><span class="line">    pushdown(now);</span><br><span class="line">    <span class="keyword">while</span>(tr[tr[now].son[<span class="number">0</span>]].size + <span class="number">1</span> != x)&#123;</span><br><span class="line">        <span class="keyword">if</span>(tr[tr[now].son[<span class="number">0</span>]].size + <span class="number">1</span> &gt; x)	now = tr[now].son[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            x -= tr[tr[now].son[<span class="number">0</span>]].size + <span class="number">1</span>;</span><br><span class="line">            now = tr[now].son[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        pushdown(now);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> now;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    splay(select(l<span class="number">-1</span>), <span class="number">0</span>);</span><br><span class="line">    splay(select(r+<span class="number">1</span>), root);</span><br><span class="line">    <span class="keyword">int</span> t = tr[tr[root].son[<span class="number">1</span>]].son[<span class="number">0</span>];</span><br><span class="line">    tr[t].rev ^= <span class="number">1</span>;</span><br><span class="line">    swap(tr[t].son[<span class="number">0</span>], tr[t].son[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt; r)	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>, x = ++cnt;</span><br><span class="line">    tr[x].val = mid - <span class="number">1</span>;</span><br><span class="line">    tr[x].size = <span class="number">1</span>;</span><br><span class="line">    tr[x].fa = f;</span><br><span class="line">    tr[x].rev = <span class="number">0</span>;</span><br><span class="line">    tr[x].son[<span class="number">0</span>] = build(l, mid<span class="number">-1</span>, x);</span><br><span class="line">    tr[x].son[<span class="number">1</span>] = build(mid+<span class="number">1</span>, r, x);</span><br><span class="line">    pushup(x);</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    pushdown(x);</span><br><span class="line">    <span class="keyword">if</span>(tr[x].son[<span class="number">0</span>])	print(tr[x].son[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">if</span>(tr[x].val &gt;= <span class="number">1</span> &amp;&amp; tr[x].val &lt;= n)	<span class="built_in">printf</span>(<span class="string">"%d "</span>, tr[x].val);</span><br><span class="line">    <span class="keyword">if</span>(tr[x].son[<span class="number">1</span>])	print(tr[x].son[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    root = build(<span class="number">1</span>, n+<span class="number">2</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;ql, &amp;qr);</span><br><span class="line">        reverse(ql+<span class="number">1</span>, qr+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    print(root);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二、非旋Treap-1"><a href="#二、非旋Treap-1" class="headerlink" title="二、非旋Treap"></a>二、非旋Treap</h3><p>同上。</p>
+<h4 id="Code-4"><a href="#Code-4" class="headerlink" title="Code#4"></a>Code#4</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">1e9</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">int</span> n, m, ql, qr;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Treap</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> val, size, son[<span class="number">2</span>], hp;</span><br><span class="line">	<span class="keyword">bool</span> rev;</span><br><span class="line">&#125;tr[N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">OPT_Treap</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> cnt, root;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">newNode</span><span class="params">(<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">		cnt++;</span><br><span class="line">		tr[cnt].val = val;</span><br><span class="line">		tr[cnt].hp = rand();</span><br><span class="line">		tr[cnt].size = <span class="number">1</span>;</span><br><span class="line">		tr[cnt].son[<span class="number">0</span>] = tr[cnt].son[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">		tr[cnt].rev = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> cnt;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(!id)	<span class="keyword">return</span>;</span><br><span class="line">		tr[id].size = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(tr[id].son[<span class="number">0</span>])	tr[id].size += tr[tr[id].son[<span class="number">0</span>]].size;</span><br><span class="line">		<span class="keyword">if</span>(tr[id].son[<span class="number">1</span>])	tr[id].size += tr[tr[id].son[<span class="number">1</span>]].size;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(!tr[id].rev)	<span class="keyword">return</span>;</span><br><span class="line">		<span class="keyword">if</span>(tr[id].son[<span class="number">0</span>])&#123;</span><br><span class="line">			<span class="keyword">int</span> t = tr[id].son[<span class="number">0</span>];</span><br><span class="line">			tr[t].rev ^= <span class="number">1</span>;</span><br><span class="line">			swap(tr[t].son[<span class="number">0</span>], tr[t].son[<span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(tr[id].son[<span class="number">1</span>])&#123;</span><br><span class="line">			<span class="keyword">int</span> t = tr[id].son[<span class="number">1</span>];</span><br><span class="line">			tr[t].rev ^= <span class="number">1</span>;</span><br><span class="line">			swap(tr[t].son[<span class="number">0</span>], tr[t].son[<span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">		tr[id].rev ^= <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(a == <span class="number">0</span>)	<span class="keyword">return</span> b;</span><br><span class="line">		<span class="keyword">if</span>(b == <span class="number">0</span>)	<span class="keyword">return</span> a;</span><br><span class="line">		<span class="keyword">if</span>(tr[a].hp &lt;= tr[b].hp)&#123;</span><br><span class="line">			pushdown(a);</span><br><span class="line">			tr[a].son[<span class="number">1</span>] = merge(tr[a].son[<span class="number">1</span>], b);</span><br><span class="line">			pushup(a);</span><br><span class="line">			<span class="keyword">return</span> a;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			pushdown(b);</span><br><span class="line">			tr[b].son[<span class="number">0</span>] = merge(a, tr[b].son[<span class="number">0</span>]);</span><br><span class="line">			pushup(b);</span><br><span class="line">			<span class="keyword">return</span> b;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">split</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> k, <span class="keyword">int</span> &amp;x, <span class="keyword">int</span> &amp;y)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(!id)&#123;</span><br><span class="line">			x = <span class="number">0</span>, y = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		pushdown(id);</span><br><span class="line">		<span class="keyword">if</span>(tr[tr[id].son[<span class="number">0</span>]].size &gt;= k)</span><br><span class="line">			y = id, split(tr[id].son[<span class="number">0</span>], k, x, tr[id].son[<span class="number">0</span>]);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			x = id, split(tr[id].son[<span class="number">1</span>], k - tr[tr[id].son[<span class="number">0</span>]].size - <span class="number">1</span>, tr[id].son[<span class="number">1</span>], y);</span><br><span class="line">		pushup(id);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> L, t, R;</span><br><span class="line">		split(root, l - <span class="number">1</span>, L, t);</span><br><span class="line">		split(t, r - l + <span class="number">1</span>, t, R);</span><br><span class="line">		tr[t].rev ^= <span class="number">1</span>;</span><br><span class="line">		swap(tr[t].son[<span class="number">0</span>], tr[t].son[<span class="number">1</span>]);</span><br><span class="line">		root = merge(merge(L, t), R);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(l &gt; r)	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> t = newNode(mid);</span><br><span class="line">		tr[t].son[<span class="number">0</span>] = build(l, mid - <span class="number">1</span>);</span><br><span class="line">		tr[t].son[<span class="number">1</span>] = build(mid + <span class="number">1</span>, r);</span><br><span class="line">		pushup(t);</span><br><span class="line">		<span class="keyword">return</span> t;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;BST;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	BST.pushdown(x);</span><br><span class="line">	<span class="keyword">if</span>(tr[x].son[<span class="number">0</span>])	print(tr[x].son[<span class="number">0</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d "</span>, tr[x].val);</span><br><span class="line">	<span class="keyword">if</span>(tr[x].son[<span class="number">1</span>])	print(tr[x].son[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	srand(<span class="number">200127</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">	BST.root = BST.build(<span class="number">1</span>, n);</span><br><span class="line">	<span class="keyword">while</span>(m--)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;ql, &amp;qr);</span><br><span class="line">		BST.reverse(ql, qr);</span><br><span class="line">	&#125;</span><br><span class="line">	print(BST.root);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="二逼平衡树"><a href="#二逼平衡树" class="headerlink" title="二逼平衡树"></a>二逼平衡树</h1><p>题目链接：<br><a href="https://www.luogu.org/problemnew/show/3380" target="_blank" rel="noopener">luogu3380</a><br><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3196" target="_blank" rel="noopener">bzoj3196</a></p>
+<h2 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="一、线段树套Splay"><a href="#一、线段树套Splay" class="headerlink" title="一、线段树套Splay"></a>一、线段树套Splay</h3><p>这道题与普通平衡树唯一的不同就在于所有查询都是区间查询，那么我们需要在平衡树外面套一层线段树以供区间查询，即线段树套平衡树。<br>当然，<strong>并非真的要在每个线段树节点内建一颗平衡树，存一下在这个节点的平衡树的根的编号就行了。</strong></p>
+<ul>
+<li>查询区间内k的排名：在线段树上递归找查询的区间，在相应节点上的平衡树上查询比k小的数的个数，回溯时将所有答案相加得到了区间内比k小的数的个数，最后+1就是排名；</li>
+<li>查询区间内排名为k的值：这个要麻烦一点，由于不同线段树节点上的答案不能进行合并，只能考虑二分答案，问题转化为二分出的答案在区间内的排名问题，即第一问；</li>
+<li>修改某位置的值：修改即先删除原值，再插入新值；在线段树上找到该节点，对所经路线上所有线段树里的平衡树进行删除插入操作；</li>
+<li>查询k在区间内的前驱：同第一问，只不过在更新答案时不是相加，而是取max；</li>
+<li>查询k在区间内的后继：同第一问，只不过在更新答案时不是相加，而是取min。</li>
+</ul>
+<h4 id="Code-5"><a href="#Code-5" class="headerlink" title="Code#5"></a>Code#5</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lid id&lt;&lt;1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rid id&lt;&lt;1|1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid ((A[id].l+A[id].r)&gt;&gt;1)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x7fffffff</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">50005</span>;</span><br><span class="line"><span class="keyword">int</span> n, m, a[N], opt, ql, qr, qk, qpos, tmp;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">splay</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> size, times, val, son[<span class="number">2</span>], fa;</span><br><span class="line">&#125;B[(<span class="keyword">int</span>)<span class="number">4e6</span>];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">segTree</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l, r, root;</span><br><span class="line">&#125;A[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">OPT_splay</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> cnt;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x)&#123;</span><br><span class="line">            B[x].size = B[x].times;</span><br><span class="line">            <span class="keyword">if</span>(B[x].son[<span class="number">0</span>])	B[x].size += B[B[x].son[<span class="number">0</span>]].size;</span><br><span class="line">            <span class="keyword">if</span>(B[x].son[<span class="number">1</span>])	B[x].size += B[B[x].son[<span class="number">1</span>]].size;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> kind)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> y = B[x].fa, z = B[y].fa, a = B[y].son[kind], b = B[x].son[kind], c = B[x].son[!kind];</span><br><span class="line">        B[x].fa = z, B[x].son[kind] = y;</span><br><span class="line">        B[y].fa = x, B[y].son[!kind] = b;</span><br><span class="line">        B[z].son[B[z].son[<span class="number">1</span>] == y] = x;</span><br><span class="line">        B[b].fa = y;</span><br><span class="line">        pushup(y), pushup(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> goal, <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x == goal)	<span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">while</span>(B[x].fa != goal)&#123;</span><br><span class="line">            <span class="keyword">int</span> y = B[x].fa, z = B[y].fa;</span><br><span class="line">            <span class="keyword">int</span> isrson1 = B[y].son[<span class="number">1</span>] == x, isrson2 = B[z].son[<span class="number">1</span>] == y;</span><br><span class="line">            <span class="keyword">if</span>(z == goal)	rotate(x, !isrson1);</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(isrson1 == isrson2)	rotate(y, !isrson2);</span><br><span class="line">                <span class="keyword">else</span>	rotate(x, !isrson1);</span><br><span class="line">                rotate(x, !isrson2);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(goal == <span class="number">0</span>)	A[id].root = x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">newNode</span><span class="params">(<span class="keyword">int</span> val, <span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">        cnt++;</span><br><span class="line">        B[cnt].fa = fa;</span><br><span class="line">        B[cnt].val = val;</span><br><span class="line">        B[cnt].size = B[cnt].times = <span class="number">1</span>;</span><br><span class="line">        B[cnt].son[<span class="number">0</span>] = B[cnt].son[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getPre</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> now = A[id].root, res = -INF;</span><br><span class="line">        <span class="keyword">while</span>(now)&#123;</span><br><span class="line">            <span class="keyword">if</span>(B[now].val &lt; x)&#123;</span><br><span class="line">                res = max(res, B[now].val);</span><br><span class="line">                now = B[now].son[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>	now = B[now].son[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getSub</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> now = A[id].root, res = INF;</span><br><span class="line">        <span class="keyword">while</span>(now)&#123;</span><br><span class="line">            <span class="keyword">if</span>(B[now].val &gt; x)&#123;</span><br><span class="line">                res = min(res, B[now].val);</span><br><span class="line">                now = B[now].son[<span class="number">0</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>	now = B[now].son[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">select</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> now = A[id].root;</span><br><span class="line">        <span class="keyword">while</span>(now)&#123;</span><br><span class="line">            <span class="keyword">if</span>(B[now].val == x)	<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(B[now].val &gt; x)	now = B[now].son[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(B[now].val &lt; x)	now = B[now].son[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!now)	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">return</span> now;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getRank</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(select(x, id) != <span class="number">-1</span>)	splay(select(x, id), <span class="number">0</span>, id);</span><br><span class="line">        <span class="keyword">else</span>	splay(select(getSub(x, id), id), <span class="number">0</span>, id);</span><br><span class="line">        <span class="keyword">return</span> B[B[A[id].root].son[<span class="number">0</span>]].size;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> val, <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">        splay(select(getPre(val, id), id), <span class="number">0</span>, id);</span><br><span class="line">        splay(select(getSub(val, id), id), A[id].root, id);</span><br><span class="line">        <span class="keyword">int</span> t = B[B[A[id].root].son[<span class="number">1</span>]].son[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">if</span>(!t)	B[B[A[id].root].son[<span class="number">1</span>]].son[<span class="number">0</span>] = newNode(val, B[A[id].root].son[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">else</span>	B[t].times++, B[t].size++;</span><br><span class="line">        pushup(B[A[id].root].son[<span class="number">1</span>]);</span><br><span class="line">        pushup(A[id].root);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> val, <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">        splay(select(getPre(val, id), id), <span class="number">0</span>, id);</span><br><span class="line">        splay(select(getSub(val, id), id), A[id].root, id);</span><br><span class="line">        <span class="keyword">int</span> t = B[B[A[id].root].son[<span class="number">1</span>]].son[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">if</span>(!t || B[t].times == <span class="number">0</span>)	<span class="keyword">return</span>;</span><br><span class="line">        B[t].times--, B[t].size--;</span><br><span class="line">        <span class="keyword">if</span>(B[t].times == <span class="number">0</span>)	B[B[A[id].root].son[<span class="number">1</span>]].son[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        pushup(B[A[id].root].son[<span class="number">1</span>]);</span><br><span class="line">        pushup(A[id].root);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;Splay;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">OPT_segTree</span>&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">        A[id].root = Splay.newNode(-INF, <span class="number">0</span>);</span><br><span class="line">        B[A[id].root].son[<span class="number">1</span>] = Splay.newNode(INF, A[id].root);</span><br><span class="line">        A[id].l = l, A[id].r = r;</span><br><span class="line">        <span class="keyword">if</span>(A[id].l == A[id].r)	<span class="keyword">return</span>;</span><br><span class="line">        build(lid, l, mid);</span><br><span class="line">        build(rid, mid+<span class="number">1</span>, r);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> pos, <span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">        Splay.insert(val, id);</span><br><span class="line">        <span class="keyword">if</span>(A[id].l == A[id].r)	<span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(pos &lt;= mid)	insert(lid, pos, val);</span><br><span class="line">        <span class="keyword">else</span>	insert(rid, pos, val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getRank</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(A[id].l == l &amp;&amp; A[id].r == r)	<span class="keyword">return</span> Splay.getRank(x, id) - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(r &lt;= mid)	<span class="keyword">return</span> getRank(lid, l, r, x);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(l &gt; mid)	<span class="keyword">return</span> getRank(rid, l, r, x);</span><br><span class="line">        <span class="keyword">else</span>	<span class="keyword">return</span> getRank(lid, l, mid, x) + getRank(rid, mid+<span class="number">1</span>, r, x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getKth</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">-1</span>, L = <span class="number">0</span>, R = <span class="number">1e8</span>;</span><br><span class="line">        <span class="keyword">while</span>(L &lt;= R)&#123;</span><br><span class="line">            <span class="keyword">int</span> Mid = (L + R) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> t1 = getRank(<span class="number">1</span>, l, r, Mid) + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> t2 = getRank(<span class="number">1</span>, l, r, Mid+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(t1 &lt;= k &amp;&amp; k &lt;= t2)&#123; ans = Mid; <span class="keyword">break</span>; &#125;</span><br><span class="line">            <span class="keyword">if</span>(t2 &lt; k)	L = Mid+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(t1 &gt; k)	R = Mid<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> pos, <span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">        Splay.del(a[pos], id);</span><br><span class="line">        Splay.insert(val, id);</span><br><span class="line">        <span class="keyword">if</span>(A[id].l == A[id].r)	<span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(pos &lt;= mid)	modify(lid, pos, val);</span><br><span class="line">        <span class="keyword">else</span>	modify(rid, pos, val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getPre</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(A[id].l == l &amp;&amp; A[id].r == r)	<span class="keyword">return</span> Splay.getPre(x, id);</span><br><span class="line">        <span class="keyword">if</span>(r &lt;= mid)	<span class="keyword">return</span> getPre(lid, l, r, x);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(l &gt; mid)	<span class="keyword">return</span> getPre(rid, l, r, x);</span><br><span class="line">        <span class="keyword">else</span>	<span class="keyword">return</span> max(getPre(lid, l, mid, x), getPre(rid, mid+<span class="number">1</span>, r, x));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getSub</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(A[id].l == l &amp;&amp; A[id].r == r)	<span class="keyword">return</span> Splay.getSub(x, id);</span><br><span class="line">        <span class="keyword">if</span>(r &lt;= mid)	<span class="keyword">return</span> getSub(lid, l, r, x);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(l &gt; mid)	<span class="keyword">return</span> getSub(rid, l, r, x);</span><br><span class="line">        <span class="keyword">else</span>	<span class="keyword">return</span> min(getSub(lid, l, mid, x), getSub(rid, mid+<span class="number">1</span>, r, x));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;Seg;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    Seg.build(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">        Seg.insert(<span class="number">1</span>, i, a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;opt);</span><br><span class="line">        <span class="keyword">if</span>(opt == <span class="number">3</span>)	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;qpos, &amp;qk);</span><br><span class="line">        <span class="keyword">else</span>	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;ql, &amp;qr, &amp;qk);</span><br><span class="line">        <span class="keyword">if</span>(opt == <span class="number">1</span>)	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, Seg.getRank(<span class="number">1</span>, ql, qr, qk) + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">2</span>)	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, Seg.getKth(ql, qr, qk));</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">3</span>)	Seg.modify(<span class="number">1</span>, qpos, qk), a[qpos] = qk;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">4</span>)	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, Seg.getPre(<span class="number">1</span>, ql, qr, qk));</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">5</span>)	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, Seg.getSub(<span class="number">1</span>, ql, qr, qk));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二、线段树套非旋Treap"><a href="#二、线段树套非旋Treap" class="headerlink" title="二、线段树套非旋Treap"></a>二、线段树套非旋Treap</h3><p>同上。</p>
+<h4 id="Code-6"><a href="#Code-6" class="headerlink" title="Code#6"></a>Code#6</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lid id&lt;&lt;1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rid id&lt;&lt;1|1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid ((A[id].l + A[id].r) &gt;&gt; 1)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x7fffffff</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">50005</span>;</span><br><span class="line"><span class="keyword">int</span> n, m, opt, ql, qr, qk, qpos, a[N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Treap</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> val, son[<span class="number">2</span>], size, hp;</span><br><span class="line">&#125;B[(<span class="keyword">int</span>)<span class="number">4e6</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">segTree</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> l, r, root;</span><br><span class="line">&#125;A[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">OPT_Treap</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> cnt;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">newNode</span><span class="params">(<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">		cnt++;</span><br><span class="line">		B[cnt].val = val;</span><br><span class="line">		B[cnt].son[<span class="number">0</span>] = B[cnt].son[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">		B[cnt].size = <span class="number">1</span>;</span><br><span class="line">		B[cnt].hp = rand();</span><br><span class="line">		<span class="keyword">return</span> cnt;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(!id)	<span class="keyword">return</span>;</span><br><span class="line">		B[id].size = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(B[id].son[<span class="number">0</span>])	B[id].size += B[B[id].son[<span class="number">0</span>]].size;</span><br><span class="line">		<span class="keyword">if</span>(B[id].son[<span class="number">1</span>])	B[id].size += B[B[id].son[<span class="number">1</span>]].size;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(a == <span class="number">0</span>)	<span class="keyword">return</span> b;</span><br><span class="line">		<span class="keyword">if</span>(b == <span class="number">0</span>)	<span class="keyword">return</span> a;</span><br><span class="line">		<span class="keyword">if</span>(B[a].hp &lt;= B[b].hp)&#123;</span><br><span class="line">			B[a].son[<span class="number">1</span>] = merge(B[a].son[<span class="number">1</span>], b);</span><br><span class="line">			pushup(a);</span><br><span class="line">			<span class="keyword">return</span> a;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			B[b].son[<span class="number">0</span>] = merge(a, B[b].son[<span class="number">0</span>]);</span><br><span class="line">			pushup(b);</span><br><span class="line">			<span class="keyword">return</span> b;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">split</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> k, <span class="keyword">int</span> &amp;x, <span class="keyword">int</span> &amp;y)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(!id)&#123;</span><br><span class="line">			x = <span class="number">0</span>, y = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(B[id].val &gt; k)</span><br><span class="line">			y = id, split(B[id].son[<span class="number">0</span>], k, x, B[id].son[<span class="number">0</span>]);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			x = id, split(B[id].son[<span class="number">1</span>], k, B[id].son[<span class="number">1</span>], y);</span><br><span class="line">		pushup(id);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> &amp;rt, <span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> l = <span class="number">0</span>, r = <span class="number">0</span>;</span><br><span class="line">		split(rt, val, l, r);</span><br><span class="line">		<span class="keyword">int</span> t = newNode(val);</span><br><span class="line">		rt = merge(merge(l, t), r);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> &amp;rt, <span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> l = <span class="number">0</span>, r = <span class="number">0</span>, t = <span class="number">0</span>;</span><br><span class="line">		split(rt, val - <span class="number">1</span>, l, t);</span><br><span class="line">		split(t, val, t, r);</span><br><span class="line">		t = merge(B[t].son[<span class="number">0</span>], B[t].son[<span class="number">1</span>]);</span><br><span class="line">		rt = merge(merge(l, t), r);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getRank</span><span class="params">(<span class="keyword">int</span> &amp;rt, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> l = <span class="number">0</span>, r = <span class="number">0</span>;</span><br><span class="line">		split(rt, x - <span class="number">1</span>, l, r);</span><br><span class="line">		<span class="keyword">int</span> ans = B[l].size + <span class="number">1</span>;</span><br><span class="line">		rt = merge(l, r);</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getPre</span><span class="params">(<span class="keyword">int</span> &amp;rt, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> now = rt, ans = -INF;</span><br><span class="line">		<span class="keyword">while</span>(now)&#123;</span><br><span class="line">			<span class="keyword">if</span>(B[now].val &lt; x)&#123;</span><br><span class="line">				ans = max(ans, B[now].val);</span><br><span class="line">				now = B[now].son[<span class="number">1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>	now = B[now].son[<span class="number">0</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getSub</span><span class="params">(<span class="keyword">int</span> &amp;rt, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> now = rt, ans = INF;</span><br><span class="line">		<span class="keyword">while</span>(now)&#123;</span><br><span class="line">			<span class="keyword">if</span>(B[now].val &gt; x)&#123;</span><br><span class="line">				ans = min(ans, B[now].val);</span><br><span class="line">				now = B[now].son[<span class="number">0</span>];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>	now = B[now].son[<span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;BST;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">OPT_segTree</span>&#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">		A[id].l = l, A[id].r = r;</span><br><span class="line">		A[id].root = BST.newNode(INF);</span><br><span class="line">		<span class="keyword">if</span>(A[id].l == A[id].r)	<span class="keyword">return</span>;</span><br><span class="line">		build(lid, l, mid);</span><br><span class="line">		build(rid, mid+<span class="number">1</span>, r);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> pos, <span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">		BST.insert(A[id].root, val);</span><br><span class="line">		<span class="keyword">if</span>(A[id].l == A[id].r)	<span class="keyword">return</span>;</span><br><span class="line">		<span class="keyword">if</span>(pos &lt;= mid)	insert(lid, pos, val);</span><br><span class="line">		<span class="keyword">else</span>	insert(rid, pos, val);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> pos, <span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">		BST.del(A[id].root, a[pos]);</span><br><span class="line">		BST.insert(A[id].root, val);</span><br><span class="line">		<span class="keyword">if</span>(A[id].l == A[id].r)	<span class="keyword">return</span>;</span><br><span class="line">		<span class="keyword">if</span>(pos &lt;= mid)	modify(lid, pos, val);</span><br><span class="line">		<span class="keyword">else</span>	modify(rid, pos, val);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x, <span class="keyword">int</span> kind)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(A[id].l == l &amp;&amp; A[id].r == r)&#123;</span><br><span class="line">			<span class="keyword">if</span>(kind == <span class="number">0</span>)	<span class="keyword">return</span> BST.getRank(A[id].root, x);</span><br><span class="line">			<span class="keyword">if</span>(kind == <span class="number">1</span>)	<span class="keyword">return</span> BST.getPre(A[id].root, x);</span><br><span class="line">			<span class="keyword">if</span>(kind == <span class="number">2</span>)	<span class="keyword">return</span> BST.getSub(A[id].root, x);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(r &lt;= mid)	<span class="keyword">return</span> query(lid, l, r, x, kind);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(l &gt; mid)	<span class="keyword">return</span> query(rid, l, r, x, kind);</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(kind == <span class="number">0</span>)	<span class="keyword">return</span> query(lid, l, mid, x, kind) + query(rid, mid+<span class="number">1</span>, r, x, kind) - <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(kind == <span class="number">1</span>)	<span class="keyword">return</span> max(query(lid, l, mid, x, kind), query(rid, mid+<span class="number">1</span>, r, x, kind));</span><br><span class="line">			<span class="keyword">if</span>(kind == <span class="number">2</span>)	<span class="keyword">return</span> min(query(lid, l, mid, x, kind), query(rid, mid+<span class="number">1</span>, r, x, kind));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">getKth</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> L = <span class="number">0</span>, R = <span class="number">1e8</span>, ans = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(L &lt;= R)&#123;</span><br><span class="line">			<span class="keyword">int</span> Mid = (L + R) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> t1 = query(<span class="number">1</span>, l, r, Mid, <span class="number">0</span>);</span><br><span class="line">			<span class="keyword">int</span> t2 = query(<span class="number">1</span>, l, r, Mid+<span class="number">1</span>, <span class="number">0</span>) - <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(t1 &lt;= k &amp;&amp; k &lt;= t2)&#123; ans = Mid; <span class="keyword">break</span>; &#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(t2 &lt; k)	L = Mid + <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(t1 &gt; k)	R = Mid - <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;Seg;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	srand(<span class="number">200127</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">	BST.cnt = <span class="number">0</span>;</span><br><span class="line">	Seg.build(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">		Seg.insert(<span class="number">1</span>, i, a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(m--)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;opt);</span><br><span class="line">		<span class="keyword">if</span>(opt == <span class="number">3</span>)	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;qpos, &amp;qk);</span><br><span class="line">		<span class="keyword">else</span>	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;ql, &amp;qr, &amp;qk);</span><br><span class="line">		<span class="keyword">if</span>(opt == <span class="number">1</span>)	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, Seg.query(<span class="number">1</span>, ql, qr, qk, <span class="number">0</span>));</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">2</span>)	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, Seg.getKth(ql, qr, qk));</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">3</span>)	Seg.modify(<span class="number">1</span>, qpos, qk), a[qpos] = qk;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">4</span>)	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, Seg.query(<span class="number">1</span>, ql, qr, qk, <span class="number">1</span>));</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(opt == <span class="number">5</span>)	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, Seg.query(<span class="number">1</span>, ql, qr, qk, <span class="number">2</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三、树状数组套值域线段树（带修改主席树）"><a href="#三、树状数组套值域线段树（带修改主席树）" class="headerlink" title="三、树状数组套值域线段树（带修改主席树）"></a>三、树状数组套值域线段树（带修改主席树）</h3><p>hmm…这道题其实可以不用平衡树做，因为要求第k大，自然而然想到主席树可以做到，但这道题有修改操作，普通的维护前缀和的主席树修改一次就要把后面所有树都改了，所以修改一次的时间复杂度就是$O(NlogN)$的，显然不行。于是，带修改主席树应运而生：我们不再让值域线段树们维护前缀和了，而是让它们维护树状数组上对应的约$logN$个点，这样一次修改的时间复杂度就降到了$O(log_2^2N)$。</p>
+<ul>
+<li>查询区间内k的排名：相当于找比k小的数有多少个（答案是个数+1）。在值域线段树上二分查找k时，如果往右儿子走，就把左儿子大小加进答案里去就行了；</li>
+<li>查询区间内排名为k的值：找到树状数组里面相关的值域线段树（存进一个数组，见代码中的A[]和B[]），算出当前点左儿子大小，再决定是向左还是向右二分下去；</li>
+<li>修改某位置的值：修改即先删除原值，再插入新值；找到树状数组里面相关的值域线段树，对每棵树都进行删除和插入操作；</li>
+<li>查询k在区间内的前驱：查询区间内比k小的数有多少个，如果没有，输出-INF；否则输出区间内相应排名的值；</li>
+<li>查询k在区间内的后继：查询区间内比k大的数有多少个，如果没有，输出INF；否则输出区间内相应排名的值。</li>
+</ul>
+<p>涉及到值域线段树一般都要<strong>离散化</strong>，以保证空间；同时，这道题还必须<strong>动态开点</strong>才能保证空间。</p>
+<h4 id="Code-7"><a href="#Code-7" class="headerlink" title="Code#7"></a>Code#7</h4><p>纪念我的第一份超过200行的代码…<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x7fffffff</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">50005</span>;</span><br><span class="line"><span class="keyword">int</span> n, m, a[N], t[N&lt;&lt;<span class="number">1</span>], f[N&lt;&lt;<span class="number">1</span>], MX, A[<span class="number">20</span>], B[<span class="number">20</span>];<span class="comment">//因为有询问操作，t[]和f[]空间一定要开够!</span></span><br><span class="line"><span class="keyword">int</span> root[N], cnt;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Query</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> opt, l, r, k, pos;</span><br><span class="line">&#125;q[N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">segTree</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> size, son[<span class="number">2</span>];</span><br><span class="line">&#125;tr[N*<span class="number">15</span>*<span class="number">15</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">readin</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]), t[++t[<span class="number">0</span>]] = a[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;q[i].opt);</span><br><span class="line">		<span class="keyword">if</span>(q[i].opt != <span class="number">3</span>)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;q[i].l, &amp;q[i].r, &amp;q[i].k);</span><br><span class="line">			<span class="keyword">if</span>(q[i].opt != <span class="number">2</span>)	t[++t[<span class="number">0</span>]] = q[i].k;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;q[i].pos, &amp;q[i].k);</span><br><span class="line">			t[++t[<span class="number">0</span>]] = q[i].k;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">disc</span><span class="params">()</span></span>&#123;</span><br><span class="line">	sort(t+<span class="number">1</span>, t+t[<span class="number">0</span>]+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">int</span> len = unique(t+<span class="number">1</span>, t+t[<span class="number">0</span>]+<span class="number">1</span>) - (t+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> temp = lower_bound(t+<span class="number">1</span>, t+len+<span class="number">1</span>, a[i]) - t;</span><br><span class="line">		f[temp] = a[i], a[i] = temp;</span><br><span class="line">		MX = max(MX, temp);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(q[i].opt == <span class="number">2</span>)	<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">int</span> temp = lower_bound(t+<span class="number">1</span>, t+len+<span class="number">1</span>, q[i].k) - t;</span><br><span class="line">		f[temp] = q[i].k, q[i].k = temp;</span><br><span class="line">		MX = max(MX, temp);</span><br><span class="line">	&#125;</span><br><span class="line">	f[MX+<span class="number">1</span>] = -INF;</span><br><span class="line">	f[MX+<span class="number">2</span>] = INF;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; <span class="keyword">return</span> x &amp; -x; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init1</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> X[])</span></span>&#123;</span><br><span class="line">	X[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = x; i; i -= lowbit(i))&#123;</span><br><span class="line">		<span class="keyword">if</span>(!root[i])	root[i] = ++cnt;</span><br><span class="line">		X[++X[<span class="number">0</span>]] = root[i];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init2</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> X[])</span></span>&#123;</span><br><span class="line">	X[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = x; i &lt;= n; i += lowbit(i))&#123;</span><br><span class="line">		<span class="keyword">if</span>(!root[i])	root[i] = ++cnt;</span><br><span class="line">		X[++X[<span class="number">0</span>]] = root[i];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">	tr[id].size = tr[tr[id].son[<span class="number">0</span>]].size + tr[tr[id].son[<span class="number">1</span>]].size;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> &amp;id, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!id)	id = ++cnt;</span><br><span class="line">	<span class="keyword">if</span>(l == r)&#123;</span><br><span class="line">		tr[id].size++;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(val &lt;= mid)	insert(tr[id].son[<span class="number">0</span>], l, mid, val);</span><br><span class="line">	<span class="keyword">else</span>	insert(tr[id].son[<span class="number">1</span>], mid+<span class="number">1</span>, r, val);</span><br><span class="line">	pushup(id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> &amp;id, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!id)	id = ++cnt;</span><br><span class="line">	<span class="keyword">if</span>(l == r)&#123;</span><br><span class="line">		<span class="keyword">if</span>(tr[id].size &gt; <span class="number">0</span>)	tr[id].size--;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(val &lt;= mid)	del(tr[id].son[<span class="number">0</span>], l, mid, val);</span><br><span class="line">	<span class="keyword">else</span>	del(tr[id].son[<span class="number">1</span>], mid+<span class="number">1</span>, r, val);</span><br><span class="line">	pushup(id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getSmaller</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l == r)	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(k &lt;= mid)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= A[<span class="number">0</span>]; i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!tr[A[i]].son[<span class="number">0</span>])	tr[A[i]].son[<span class="number">0</span>] = ++cnt;</span><br><span class="line">			A[i] = tr[A[i]].son[<span class="number">0</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= B[<span class="number">0</span>]; i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!tr[B[i]].son[<span class="number">0</span>])	tr[B[i]].son[<span class="number">0</span>] = ++cnt;</span><br><span class="line">			B[i] = tr[B[i]].son[<span class="number">0</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> getSmaller(l, mid, k);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= A[<span class="number">0</span>]; i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!tr[A[i]].son[<span class="number">1</span>])	tr[A[i]].son[<span class="number">1</span>] = ++cnt;</span><br><span class="line">			res -= tr[tr[A[i]].son[<span class="number">0</span>]].size;</span><br><span class="line">			A[i] = tr[A[i]].son[<span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= B[<span class="number">0</span>]; i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!tr[B[i]].son[<span class="number">1</span>])	tr[B[i]].son[<span class="number">1</span>] = ++cnt;</span><br><span class="line">			res += tr[tr[B[i]].son[<span class="number">0</span>]].size;</span><br><span class="line">			B[i] = tr[B[i]].son[<span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res + getSmaller(mid+<span class="number">1</span>, r, k);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getBigger</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l == r)	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(k &lt;= mid)&#123;</span><br><span class="line">		<span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= A[<span class="number">0</span>]; i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!tr[A[i]].son[<span class="number">0</span>])	tr[A[i]].son[<span class="number">0</span>] = ++cnt;</span><br><span class="line">			res -= tr[tr[A[i]].son[<span class="number">1</span>]].size;</span><br><span class="line">			A[i] = tr[A[i]].son[<span class="number">0</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= B[<span class="number">0</span>]; i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!tr[B[i]].son[<span class="number">0</span>])	tr[B[i]].son[<span class="number">0</span>] = ++cnt;</span><br><span class="line">			res += tr[tr[B[i]].son[<span class="number">1</span>]].size;</span><br><span class="line">			B[i] = tr[B[i]].son[<span class="number">0</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res + getBigger(l, mid, k);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= A[<span class="number">0</span>]; i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!tr[A[i]].son[<span class="number">1</span>])	tr[A[i]].son[<span class="number">1</span>] = ++cnt;</span><br><span class="line">			A[i] = tr[A[i]].son[<span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= B[<span class="number">0</span>]; i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!tr[B[i]].son[<span class="number">1</span>])	tr[B[i]].son[<span class="number">1</span>] = ++cnt;</span><br><span class="line">			B[i] = tr[B[i]].son[<span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> getBigger(mid+<span class="number">1</span>, r, k);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getKth</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l == r)	<span class="keyword">return</span> l;</span><br><span class="line">	<span class="keyword">int</span> lsize = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= A[<span class="number">0</span>]; i++)	lsize -= tr[tr[A[i]].son[<span class="number">0</span>]].size;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= B[<span class="number">0</span>]; i++)	lsize += tr[tr[B[i]].son[<span class="number">0</span>]].size;</span><br><span class="line">	<span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(lsize &gt;= k)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= A[<span class="number">0</span>]; i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!tr[A[i]].son[<span class="number">0</span>])	tr[A[i]].son[<span class="number">0</span>] = ++cnt;</span><br><span class="line">			A[i] = tr[A[i]].son[<span class="number">0</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= B[<span class="number">0</span>]; i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!tr[B[i]].son[<span class="number">0</span>])	tr[B[i]].son[<span class="number">0</span>] = ++cnt;</span><br><span class="line">			B[i] = tr[B[i]].son[<span class="number">0</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> getKth(l, mid, k);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= A[<span class="number">0</span>]; i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!tr[A[i]].son[<span class="number">1</span>])	tr[A[i]].son[<span class="number">1</span>] = ++cnt;</span><br><span class="line">			A[i] = tr[A[i]].son[<span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= B[<span class="number">0</span>]; i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!tr[B[i]].son[<span class="number">1</span>])	tr[B[i]].son[<span class="number">1</span>] = ++cnt;</span><br><span class="line">			B[i] = tr[B[i]].son[<span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> getKth(mid+<span class="number">1</span>, r, k - lsize);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getPre</span><span class="params">(<span class="keyword">int</span> ql, <span class="keyword">int</span> qr, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	init1(ql<span class="number">-1</span>, A), init1(qr, B);</span><br><span class="line">	<span class="keyword">int</span> rank = getSmaller(<span class="number">1</span>, MX, k) + <span class="number">1</span>;</span><br><span class="line">	init1(ql<span class="number">-1</span>, A), init1(qr, B);</span><br><span class="line">	<span class="keyword">if</span>(rank == <span class="number">1</span>)	<span class="keyword">return</span> MX+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span>	<span class="keyword">return</span> getKth(<span class="number">1</span>, MX, rank<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getSub</span><span class="params">(<span class="keyword">int</span> ql, <span class="keyword">int</span> qr, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	init1(ql<span class="number">-1</span>, A), init1(qr, B);</span><br><span class="line">	<span class="keyword">int</span> rank = getBigger(<span class="number">1</span>, MX, k) + <span class="number">1</span>;</span><br><span class="line">	init1(ql<span class="number">-1</span>, A), init1(qr, B);</span><br><span class="line">	<span class="keyword">if</span>(rank == <span class="number">1</span>)	<span class="keyword">return</span> MX+<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">else</span>	<span class="keyword">return</span> getKth(<span class="number">1</span>, MX, qr - ql + <span class="number">3</span> - rank);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	readin();</span><br><span class="line">	disc();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		init2(i, A);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= A[<span class="number">0</span>]; j++)</span><br><span class="line">			insert(A[j], <span class="number">1</span>, MX, a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)&#123;</span><br><span class="line">		<span class="keyword">switch</span>(q[i].opt)&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">1</span>: init1(q[i].l<span class="number">-1</span>, A); init1(q[i].r, B); <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, getSmaller(<span class="number">1</span>, MX, q[i].k) + <span class="number">1</span>); <span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">2</span>: init1(q[i].l<span class="number">-1</span>, A); init1(q[i].r, B); <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, f[getKth(<span class="number">1</span>, MX, q[i].k)]); <span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">3</span>:&#123;</span><br><span class="line">				init2(q[i].pos, A);</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= A[<span class="number">0</span>]; j++)&#123;</span><br><span class="line">					del(A[j], <span class="number">1</span>, MX, a[q[i].pos]);</span><br><span class="line">					insert(A[j], <span class="number">1</span>, MX, q[i].k);</span><br><span class="line">				&#125;</span><br><span class="line">				a[q[i].pos] = q[i].k;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">4</span>: <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, f[getPre(q[i].l, q[i].r, q[i].k)]); <span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">5</span>: <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, f[getSub(q[i].l, q[i].r, q[i].k)]); <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/BZOJ/" rel="tag"># BZOJ</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/29/ZJOI2008-树的统计（树链剖分，线段树）/" rel="next" title="[ZJOI2008]树的统计（树链剖分，线段树）">
+                <i class="fa fa-chevron-left"></i> [ZJOI2008]树的统计（树链剖分，线段树）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/30/NOIP2017-D2-T1-奶酪（并查集）/" rel="prev" title="[NOIP2017 D2 T1]奶酪（并查集）">
+                [NOIP2017 D2 T1]奶酪（并查集） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">PhantomAgony</p>
+              <p class="site-description motion-element" itemprop="description">Welcome to my world!</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/PhantomAgony" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/PhantomAgony" target="_blank" title="CSDN"><i class="fa fa-fw fa-adjust"></i>CSDN</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.luogu.org" target="_blank" title="luogu"><i class="fa fa-fw fa-globe"></i>luogu</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.lydsy.com/JudgeOnline/wttl/wttl.php" target="_blank" title="bzoj"><i class="fa fa-fw fa-globe"></i>bzoj</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://acm.hdu.edu.cn" target="_blank" title="hdu"><i class="fa fa-fw fa-globe"></i>hdu</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://poj.org" target="_blank" title="poj"><i class="fa fa-fw fa-globe"></i>poj</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://codeforces.com" target="_blank" title="codeforces"><i class="fa fa-fw fa-globe"></i>codeforces</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.spoj.com" target="_blank" title="spoj"><i class="fa fa-fw fa-globe"></i>spoj</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://uoj.ac" target="_blank" title="uoj"><i class="fa fa-fw fa-globe"></i>uoj</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://loj.ac" target="_blank" title="loj"><i class="fa fa-fw fa-globe"></i>loj</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#普通平衡树"><span class="nav-number">1.</span> <span class="nav-text">普通平衡树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">1.1.</span> <span class="nav-text">解题思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Splay"><span class="nav-number">1.1.1.</span> <span class="nav-text">一、Splay</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-1"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Code#1</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、非旋Treap"><span class="nav-number">1.1.2.</span> <span class="nav-text">二、非旋Treap</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-2"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Code#2</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文艺平衡树"><span class="nav-number">2.</span> <span class="nav-text">文艺平衡树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路-1"><span class="nav-number">2.1.</span> <span class="nav-text">解题思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Splay-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">一、Splay</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-3"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">Code#3</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、非旋Treap-1"><span class="nav-number">2.1.2.</span> <span class="nav-text">二、非旋Treap</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-4"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">Code#4</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二逼平衡树"><span class="nav-number">3.</span> <span class="nav-text">二逼平衡树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路-2"><span class="nav-number">3.1.</span> <span class="nav-text">解题思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、线段树套Splay"><span class="nav-number">3.1.1.</span> <span class="nav-text">一、线段树套Splay</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-5"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">Code#5</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、线段树套非旋Treap"><span class="nav-number">3.1.2.</span> <span class="nav-text">二、线段树套非旋Treap</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-6"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">Code#6</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、树状数组套值域线段树（带修改主席树）"><span class="nav-number">3.1.3.</span> <span class="nav-text">三、树状数组套值域线段树（带修改主席树）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-7"><span class="nav-number">3.1.3.1.</span> <span class="nav-text">Code#7</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PhantomAgony</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
