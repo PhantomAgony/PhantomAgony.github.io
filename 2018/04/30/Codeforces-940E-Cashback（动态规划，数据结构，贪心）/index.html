@@ -225,7 +225,7 @@
         
           
   
-  <li class="menu-item menu-item-tags">
+  <li class="menu-item menu-item-tags menu-item-active">
     <a href="/tags/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
 </li>
@@ -235,7 +235,7 @@
         
           
   
-  <li class="menu-item menu-item-categories menu-item-active">
+  <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
 </li>
@@ -487,7 +487,7 @@
 </div>
 <h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p>In the first example any partition yields 6 as the sum.<br>In the second example one of the optimal partitions is $[1,1],[10,10,10,10,10,10,9,10,10,10]$ with the values 2 and 90 respectively.<br>In the third example one of the optimal partitions is $[2,3],[6,4,5,7],[1]$ with the values 3, 13 and 1 respectively.<br>In the fourth example one of the optimal partitions is $[1],[3,4,5,5,3,4],[1]$ with the values 1, 21 and 1 respectively.</p>
 <hr>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>这当然是一道dp题。<br>我们先设$dp[i]$表示前$i$个数字划分后的最小代价，那么转移就是$dp[i]=min{dp[k]+cal(k+1, i)\ |\ 1 \leqslant k &lt; i}$，其中$cal(l, r)$是计算$l$到$r$作为整体时的代价。<br>复杂度？$cal(l,r)$可以用multiset之类的做到$O(\log n)$完成，但是dp方程里面有两层循环，所以复杂度高达$O(n^2\log n)$，差远了。</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>这当然是一道dp题。<br>我们先设$dp[i]$表示前$i$个数字划分后的最小代价，那么转移就是$dp[i]=min\{dp[k]+cal(k+1, i)\ |\ 1 \leqslant k &lt; i\}$，其中$cal(l, r)$是计算$l$到$r$作为整体时的代价。<br>复杂度？$cal(l,r)$可以用multiset之类的做到$O(\log n)$完成，但是dp方程里面有两层循环，所以复杂度高达$O(n^2\log n)$，差远了。</p>
 <p>怎么优化呢？这里我们可以发现一个贪心：划分的每一块长度要么是1，要么是c。证明：如果块的长度小于c，那么代价是所有值的和，与把这些值划分成一份一份的等价；如果块的长度大于c，我们把它们划分成几个长为c或1的块，答案一定不会更差（去除数量相同，但区间更小，更有机会去除掉大一点的数，手动模拟一下就知道了）。<br>综上所述，我们的dp长这样：</p>
 <ul>
 <li>dp状态：$dp[i]$表示前$i$个数字划分后的最小代价</li>
@@ -617,7 +617,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1354,8 +1354,6 @@
 
   
 
-
- 
 
   </body>
 </html>

@@ -225,7 +225,7 @@
         
           
   
-  <li class="menu-item menu-item-tags">
+  <li class="menu-item menu-item-tags menu-item-active">
     <a href="/tags/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
 </li>
@@ -235,7 +235,7 @@
         
           
   
-  <li class="menu-item menu-item-categories menu-item-active">
+  <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
 </li>
@@ -440,7 +440,7 @@
 <h2 id="样例说明"><a href="#样例说明" class="headerlink" title="样例说明"></a>样例说明</h2><p>小凯手中有面值为3和7的金币无数个，在不找零的前提下无法准确支付价值为1、 2、4、5、8、11 的物品，其中最贵的物品价值为 11，比 11 贵的物品都能买到，比如：<br>$ 12 = 3 \times 4 + 7 \times 0 $<br>$ 13 = 3 \times 2 + 7 \times 1 $<br>$ 14 = 3 \times 0 + 7 \times 2 $<br>$ 15 = 3 \times 5 + 7 \times 0 $</p>
 <h2 id="数据范围与约定"><a href="#数据范围与约定" class="headerlink" title="数据范围与约定"></a>数据范围与约定</h2><p>对于 30%的数据： $ 1 \le a,b \le 50 $。<br>对于 60%的数据： $ 1 \le a,b \le 10^4 $。<br>对于 100%的数据：$ 1 \le a,b \le 10^9 $。</p>
 <hr>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>因为$ (a,b) = 1 $，所以$ {a, 2a, 3a, …, (b-1)a} $为模$ b $的完全剩余系。<br>设$ T $是一个$ a, b $无法表示的数且$ T \equiv ka(mod \ b) $，$ (1 \le k \le b-1) $.<br>若$ T \ge ka $，则$ T $一定可以表示为$ ka+nb $，$ (n \ge 0) $，所以$ T &lt; ka $，则此时$ T $最大为$ ka-b $.<br>显然，当$ k $最大时$ T $最大，所以$ T = (b-1)a-b = ab - a - b $.</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>因为$ (a,b) = 1 $，所以$ \{a, 2a, 3a, …, (b-1)a\} $为模$ b $的完全剩余系。<br>设$ T $是一个$ a, b $无法表示的数且$ T \equiv ka(mod \ b) $，$ (1 \le k \le b-1) $.<br>若$ T \ge ka $，则$ T $一定可以表示为$ ka+nb $，$ (n \ge 0) $，所以$ T &lt; ka $，则此时$ T $最大为$ ka-b $.<br>显然，当$ k $最大时$ T $最大，所以$ T = (b-1)a-b = ab - a - b $.</p>
 <hr>
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line">LL a, b;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;a, &amp;b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld"</span>,  a * b - a - b);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -562,7 +562,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1299,8 +1299,6 @@
 
   
 
-
- 
 
   </body>
 </html>
