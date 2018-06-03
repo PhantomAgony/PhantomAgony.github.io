@@ -99,25 +99,25 @@
 
 
 
-  <meta name="description" content="SCOI2011">
-<meta name="keywords" content="SDOI">
+  <meta name="description" content="Codeforces 988.F">
+<meta name="keywords" content="Codeforces">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[SDOI2011]染色（树链剖分，线段树）">
-<meta property="og:url" content="http://yoursite.com/2018/04/28/SDOI2011-染色（树链剖分，线段树）/index.html">
+<meta property="og:title" content="[Codeforces 988.F] Rain and Umbrellas（序列dp）">
+<meta property="og:url" content="http://yoursite.com/2018/06/03/Codeforces-988-F-Rain-and-Umbrellas（序列dp）/index.html">
 <meta property="og:site_name" content="PhantomAgony">
-<meta property="og:description" content="SCOI2011">
+<meta property="og:description" content="Codeforces 988.F">
 <meta property="og:locale" content="_en">
-<meta property="og:updated_time" content="2018-04-30T07:01:47.942Z">
+<meta property="og:updated_time" content="2018-06-03T13:49:58.266Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[SDOI2011]染色（树链剖分，线段树）">
-<meta name="twitter:description" content="SCOI2011">
+<meta name="twitter:title" content="[Codeforces 988.F] Rain and Umbrellas（序列dp）">
+<meta name="twitter:description" content="Codeforces 988.F">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/28/SDOI2011-染色（树链剖分，线段树）/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/03/Codeforces-988-F-Rain-and-Umbrellas（序列dp）/"/>
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>[SDOI2011]染色（树链剖分，线段树） | PhantomAgony</title>
+  <title>[Codeforces 988.F] Rain and Umbrellas（序列dp） | PhantomAgony</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/28/SDOI2011-染色（树链剖分，线段树）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/03/Codeforces-988-F-Rain-and-Umbrellas（序列dp）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="PhantomAgony">
@@ -356,7 +356,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[SDOI2011]染色（树链剖分，线段树）</h1>
+          <h1 class="post-title" itemprop="name headline">[Codeforces 988.F] Rain and Umbrellas（序列dp）</h1>
         
 
         <div class="post-meta">
@@ -368,7 +368,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-28T20:30:08+08:00">2018-04-28</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-03T21:47:05+08:00">2018-06-03</time>
             
 
             
@@ -389,35 +389,14 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/动态规划/" itemprop="url" rel="index"><span itemprop="name">动态规划</span></a></span>
 
                 
                 
                   , 
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/图论/" itemprop="url" rel="index"><span itemprop="name">图论</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/线段树/" itemprop="url" rel="index"><span itemprop="name">线段树</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/图论/树/" itemprop="url" rel="index"><span itemprop="name">树</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/图论/树/树链剖分/" itemprop="url" rel="index"><span itemprop="name">树链剖分</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/动态规划/序列dp/" itemprop="url" rel="index"><span itemprop="name">序列dp</span></a></span>
 
                 
                 
@@ -437,7 +416,7 @@
           
 
           
-              <div class="post-description">SCOI2011</div>
+              <div class="post-description">Codeforces 988.F</div>
           
 
         </div>
@@ -453,18 +432,58 @@
       
 
       
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给定一棵有n个节点的无根树和m个操作，操作有2类：<a id="more"></a><br>1、将节点a到节点b路径上所有点都染成颜色c；<br>2、询问节点a到节点b路径上的颜色段数量（连续相同颜色被认为是同一段），<br>如“112221”由3段组成：“11”、“222”和“1”。<br>请你写一个程序依次完成这m个操作。</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>第一行包含2个整数n和m，分别表示节点数和操作数；<br>第二行包含n个正整数表示n个节点的初始颜色<br>下面 n-1 行每行包含两个整数x和y，表示x和y之间有一条无向边。<br>下面 m 行每行描述一个操作：<br>“C a b c”表示这是一个染色操作，把节点a到节点b路径上所有点（包括a和b）都染成颜色c；<br>“Q a b”表示这是一个询问操作，询问节点a到节点b（包括a和b）路径上的颜色段数量。</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>对于每个询问操作，输出一行答案。</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">6 5</span><br><span class="line">2 2 1 2 1 1</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">2 4</span><br><span class="line">2 5</span><br><span class="line">2 6</span><br><span class="line">Q 3 5</span><br><span class="line">C 2 1 1</span><br><span class="line">Q 3 5</span><br><span class="line">C 5 1 2</span><br><span class="line">Q 3 5</span><br></pre></td></tr></table></figure>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
-<h2 id="HINT"><a href="#HINT" class="headerlink" title="HINT"></a>HINT</h2><p>$N \leq 10^5, M \leq 10^5$，所有的颜色C为整数且在$[0, 10^9]$之间。</p>
+        <h1 id="F-Rain-and-Umbrellas"><a href="#F-Rain-and-Umbrellas" class="headerlink" title="F. Rain and Umbrellas"></a>F. Rain and Umbrellas</h1><p>time limit per test:2 seconds<br>memory limit per test:256 megabytes<br>input:standard input<br>output:standard output</p>
+<p>Polycarp lives on a coordinate line at the point $x=0$. He goes to his friend that lives at the point $x=a$. Polycarp can move only from left to right, he can pass one unit of length each second.</p>
+<p>Now it’s raining, so some segments of his way are in the rain. Formally, it’s raining on $n$ non-intersecting segments, the $i$-th segment which is in the rain is represented as $[l_i,r_i]$ ($0≤l_i&lt;r_i≤a$).</p>
+<p>There are $m$ umbrellas lying on the line, the $i$-th umbrella is located at point $x_i$ ($0≤x_i≤a$) and has weight $p_i$. When Polycarp begins his journey, he doesn’t have any umbrellas.</p>
+<p>During his journey from $x=0$ to $x=a$ Polycarp can pick up and throw away umbrellas. Polycarp picks up and throws down any umbrella instantly. He can carry any number of umbrellas at any moment of time. Because Polycarp doesn’t want to get wet, he must carry at least one umbrella while he moves from $x$ to $x+1$ if a segment $[x,x+1]$ is in the rain (i.e. if there exists some $i$ such that $l_i≤x$ and $x+1≤r_i$).</p>
+<p>The condition above is the only requirement. For example, it is possible to go without any umbrellas to a point where some rain segment starts, pick up an umbrella at this point and move along with an umbrella. Polycarp can swap umbrellas while he is in the rain.</p>
+<p>Each unit of length passed increases Polycarp’s fatigue by the sum of the weights of umbrellas he carries while moving.</p>
+<p>Can Polycarp make his way from point $x=0$ to point $x=a$? If yes, find the minimum total fatigue after reaching $x=a$, if Polycarp picks up and throws away umbrellas optimally.</p>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>The first line contains three integers $a$, $n$ and $m$ ($1≤a,m≤2000,1≤n≤⌈\frac{a}{2}⌉$) — the point at which Polycarp’s friend lives, the number of the segments in the rain and the number of umbrellas.</p>
+<p>Each of the next $n$ lines contains two integers $l_i$ and $r_i$ ($0≤l_i&lt;r_i≤a$) — the borders of the $i$-th segment under rain. It is guaranteed that there is no pair of intersecting segments. In other words, for each pair of segments $i$ and $j$ either $r_i&lt;l_j$ or $r_j&lt;l_i$.</p>
+<p>Each of the next $m$ lines contains two integers $x_i$ and $p_i$ ($0≤x_i≤a$, $1≤p_i≤10^5$) — the location and the weight of the $i$-th umbrella.</p>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>Print “<code>-1</code>“ (without quotes) if Polycarp can’t make his way from point $x=0$ to point $x=a$. Otherwise print one integer — the minimum total fatigue after reaching $x=a$, if Polycarp picks up and throws away umbrellas optimally.</p>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>input</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10 2 4<br>3 7<br>8 10<br>0 10<br>3 4<br>8 1<br>1 2</td>
+<td>14</td>
+</tr>
+<tr>
+<td>10 1 1<br>0 9<br>0 5</td>
+<td>45</td>
+</tr>
+<tr>
+<td>10 1 1<br>0 9<br>1 5</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p>In the first example the only possible strategy is to take the fourth umbrella at the point $x=1$, keep it till the point $x=7$ (the total fatigue at $x=7$ will be equal to $12$), throw it away, move on from $x=7$ to $x=8$ without an umbrella, take the third umbrella at x=8 and keep it till the end (the total fatigue at $x=10$ will be equal to $14$).</p>
+<p>In the second example the only possible strategy is to take the first umbrella, move with it till the point $x=9$, throw it away and proceed without an umbrella till the end.</p>
 <hr>
-<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>这道题思路应该是很好想到的——树链剖分+线段树<br>显然，合并两个颜色段时，如果合并点两侧颜色相同，那么颜色段数量为左右两段数量之和再减一，否则就是它们的和。根据这个基本性质——<br>线段树维护3个值：颜色段数量(cnt)、左端颜色(lcol)、右端颜色(rcol)，于是<code>tr[id].cnt = tr[lid].cnt + tr[rid].cnt - (tr[lid].rcol == tr[rid].lcol);</code><br>树链剖分询问时（即往上“跳”时），记录一下上一次询问的端点颜色，如果本次询问的相应端点颜色在合并点处与上次询问端点颜色相等，就要减一。<br>至此本题解决。</p>
-<p>复杂度$O(n\log ^2n)$</p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>这肯定是一道 dp 题。<br><strong>注意题目是从 $0$ 位置开始的，下列解法均先把所有位置右移了1格</strong></p>
+<p>首先有一个很显然的贪心：不可能同时拿着多把伞。<br>然后预处理一下哪些地方下雨，哪些地方有伞，每把伞在什么位置 $O(n\cdot a+m)$</p>
+<p>下面是 dp：<br>考虑到不同的状态取决于当前所在位置和当前拿着的伞，令 $dp[i][j]$ 表示走到 $i$ 时拿着第 $j$ 把伞（$j=0$ 表示没拿伞），分情况转移（已知 $dp[i][j]$，刷表法）：</p>
+<ul>
+<li>拿着第 $j$ 把伞走到 $i+1$：$dp[i+1][j] = min(dp[i+1][j],dp[i][j] + weight[j])$<br>前提： $j \neq 0$</li>
+<li>放下第 $j$ 把伞走到 $i+1$：$dp[i+1][0] = min(dp[i+1][0], dp[i][j])$<br>前提：$i$ 处不下雨</li>
+<li>拿起 $i$ 处的最轻的伞（假设是第 $k$ 把伞）走到 $i+1$：$dp[i+1][k] = min(dp[i+1][k], dp[i][j] + w[k]$<br>前提：$i$ 处有伞</li>
+</ul>
+<p>边界条件为 $dp[0][0] = 0$<br>答案就是 $\min\limits_{i=0}^m dp[a][i]$</p>
+<p>坑点：同一个位置可以有多把伞！</p>
+<p>时间复杂度 $O(n\cdot a)$</p>
 <hr>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">int</span> n, m, a[N], u, v, qa, qb, qc;</span><br><span class="line"><span class="keyword">char</span> opt[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> nxt, to;</span><br><span class="line">&#125;edge[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> head[N], edgeNum;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to)</span></span>&#123;</span><br><span class="line">	edge[++edgeNum].nxt = head[from];</span><br><span class="line">	edge[edgeNum].to = to;</span><br><span class="line">	head[from] = edgeNum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> fa[N], dep[N], size[N], son[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> f, <span class="keyword">int</span> depth)</span></span>&#123;</span><br><span class="line">	fa[x] = f, dep[x] = depth, size[x] = <span class="number">1</span>, son[x] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = head[x]; i; i = edge[i].nxt)&#123;</span><br><span class="line">		<span class="keyword">if</span>(edge[i].to == f)	<span class="keyword">continue</span>;</span><br><span class="line">		dfs1(edge[i].to, x, depth+<span class="number">1</span>);</span><br><span class="line">		size[x] += size[edge[i].to];</span><br><span class="line">		<span class="keyword">if</span>(size[edge[i].to] &gt; size[son[x]])	son[x] = edge[i].to;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> belong[N], st[N], ed[N], dfsClock, fun[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> top)</span></span>&#123;</span><br><span class="line">	st[x] = ++dfsClock, fun[dfsClock] = x;</span><br><span class="line">	belong[x] = top;</span><br><span class="line">	<span class="keyword">if</span>(son[x])	dfs2(son[x], top);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = head[x]; i; i = edge[i].nxt)&#123;</span><br><span class="line">		<span class="keyword">if</span>(edge[i].to == fa[x] || edge[i].to == son[x])	<span class="keyword">continue</span>;</span><br><span class="line">		dfs2(edge[i].to, edge[i].to);</span><br><span class="line">	&#125;</span><br><span class="line">	ed[x] = dfsClock;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lid id&lt;&lt;1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rid id&lt;&lt;1|1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid ((tr[id].l+tr[id].r)&gt;&gt;1)</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">segTree</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> l, r, lcol, rcol, cnt, cov;</span><br><span class="line">	segTree()&#123;</span><br><span class="line">		l = r = lcol = rcol = cnt = cov = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;tr[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">		tr[id].cnt = tr[lid].cnt + tr[rid].cnt - (tr[lid].rcol == tr[rid].lcol);</span><br><span class="line">		tr[id].lcol = tr[lid].lcol;</span><br><span class="line">		tr[id].rcol = tr[rid].rcol;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(tr[id].l == tr[id].r)	<span class="keyword">return</span>;</span><br><span class="line">		<span class="keyword">if</span>(tr[id].cov)&#123;</span><br><span class="line">			<span class="keyword">int</span> t = tr[id].cov;</span><br><span class="line">			tr[lid].cov = tr[rid].cov = t;</span><br><span class="line">			tr[lid].lcol = tr[lid].rcol = t;</span><br><span class="line">			tr[rid].lcol = tr[rid].rcol = t;</span><br><span class="line">			tr[lid].cnt = tr[rid].cnt = <span class="number">1</span>;</span><br><span class="line">			tr[id].cov = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">		tr[id].l = l, tr[id].r = r;</span><br><span class="line">		<span class="keyword">if</span>(tr[id].l == tr[id].r)&#123;</span><br><span class="line">			tr[id].cnt = <span class="number">1</span>;</span><br><span class="line">			tr[id].lcol = tr[id].rcol = a[fun[l]];</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		build(lid, l, mid);</span><br><span class="line">		build(rid, mid+<span class="number">1</span>, r);</span><br><span class="line">		pushup(id);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">cover</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">		pushdown(id);</span><br><span class="line">		<span class="keyword">if</span>(tr[id].l == l &amp;&amp; tr[id].r == r)&#123;</span><br><span class="line">			tr[id].cov = c;</span><br><span class="line">			tr[id].cnt = <span class="number">1</span>;</span><br><span class="line">			tr[id].lcol = tr[id].rcol = c;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(r &lt;= mid)	cover(lid, l, r, c);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(l &gt; mid)	cover(rid, l, r, c);</span><br><span class="line">		<span class="keyword">else</span>	cover(lid, l, mid, c), cover(rid, mid+<span class="number">1</span>, r, c);</span><br><span class="line">		pushup(id);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">segTree <span class="title">query</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">		pushdown(id);</span><br><span class="line">		<span class="keyword">if</span>(tr[id].l == l &amp;&amp; tr[id].r == r)	<span class="keyword">return</span> tr[id];</span><br><span class="line">		<span class="keyword">if</span>(r &lt;= mid)	<span class="keyword">return</span> query(lid, l, r);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(l &gt; mid)	<span class="keyword">return</span> query(rid, l, r);</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			segTree t1 = query(lid, l, mid), t2 = query(rid, mid+<span class="number">1</span>, r), t;</span><br><span class="line">			t.cnt = t1.cnt + t2.cnt - (t1.rcol == t2.lcol);</span><br><span class="line">			t.lcol = t1.lcol, t.rcol = t2.rcol;</span><br><span class="line">			<span class="keyword">return</span> t;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;seg;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cover</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(belong[u] != belong[v])&#123;</span><br><span class="line">		<span class="keyword">if</span>(dep[belong[u]] &lt; dep[belong[v]])	swap(u, v);</span><br><span class="line">		seg.cover(<span class="number">1</span>, st[belong[u]], st[u], c);</span><br><span class="line">		u = fa[belong[u]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dep[u] &gt; dep[v])	swap(u, v);</span><br><span class="line">	seg.cover(<span class="number">1</span>, st[u], st[v], c);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>, lastu = <span class="number">0</span>, lastv = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(belong[u] != belong[v])&#123;</span><br><span class="line">		<span class="keyword">if</span>(dep[belong[u]] &lt; dep[belong[v]])	swap(u, v), swap(lastu, lastv);</span><br><span class="line">		segTree t = seg.query(<span class="number">1</span>, st[belong[u]], st[u]);</span><br><span class="line">		ans += t.cnt - (t.rcol == lastu);</span><br><span class="line">		lastu = t.lcol;</span><br><span class="line">		u = fa[belong[u]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dep[u] &gt; dep[v])	swap(u, v), swap(lastu, lastv);</span><br><span class="line">	segTree t = seg.query(<span class="number">1</span>, st[u], st[v]);</span><br><span class="line">	ans += t.cnt - (t.lcol == lastu) - (t.rcol == lastv);</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]), a[i]++;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;u, &amp;v);</span><br><span class="line">		addEdge(u, v);</span><br><span class="line">		addEdge(v, u);</span><br><span class="line">	&#125;</span><br><span class="line">	dfs1(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">	dfs2(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">	seg.build(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">	<span class="keyword">while</span>(m--)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>, opt);</span><br><span class="line">		<span class="keyword">if</span>(opt[<span class="number">0</span>] == <span class="string">'C'</span>)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;qa, &amp;qb, &amp;qc);</span><br><span class="line">			qc++;</span><br><span class="line">			cover(qa, qb, qc);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(opt[<span class="number">0</span>] == <span class="string">'Q'</span>)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;qa, &amp;qb);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, query(qa, qb));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2005</span>;</span><br><span class="line"><span class="keyword">bool</span> rain[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Umbrella</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> pos, w;</span><br><span class="line">&#125;umb[N];</span><br><span class="line"><span class="keyword">int</span> a, n, m, x, y, umbre[N];</span><br><span class="line"><span class="keyword">int</span> dp[N][N], ans = <span class="number">1e9</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;a, &amp;n, &amp;m);</span><br><span class="line">	a++;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;x, &amp;y);</span><br><span class="line">		x++, y++;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = x; j &lt; y; j++)</span><br><span class="line">			rain[j] = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;x, &amp;y);</span><br><span class="line">		x++;</span><br><span class="line">		umb[i].pos = x;</span><br><span class="line">		umb[i].w = y;</span><br><span class="line">		<span class="keyword">if</span>(!umbre[x] || (umbre[x] &amp;&amp; y &lt; umb[umbre[x]].w))</span><br><span class="line">			umbre[x] = i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">memset</span>(dp, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dp);</span><br><span class="line">	dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= m; j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(umb[j].pos &gt; i)	<span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(j)</span><br><span class="line">				dp[i+<span class="number">1</span>][j] = min(dp[i+<span class="number">1</span>][j], dp[i][j] + umb[j].w);</span><br><span class="line">			<span class="keyword">if</span>(!rain[i])</span><br><span class="line">				dp[i+<span class="number">1</span>][<span class="number">0</span>] = min(dp[i+<span class="number">1</span>][<span class="number">0</span>], dp[i][j]);</span><br><span class="line">			<span class="keyword">if</span>(umbre[i])</span><br><span class="line">				dp[i+<span class="number">1</span>][umbre[i]] = min(dp[i+<span class="number">1</span>][umbre[i]], dp[i][j] + umb[umbre[i]].w);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; i++)</span><br><span class="line">		ans = min(ans, dp[a][i]);</span><br><span class="line">	<span class="keyword">if</span>(ans == <span class="number">1e9</span>)	<span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">	<span class="keyword">else</span>	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -484,7 +503,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/SDOI/" rel="tag"># SDOI</a>
+            <a href="/tags/Codeforces/" rel="tag"># Codeforces</a>
           
         </div>
       
@@ -497,8 +516,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/22/点分治学习笔记/" rel="next" title="点分治学习笔记">
-                <i class="fa fa-chevron-left"></i> 点分治学习笔记
+              <a href="/2018/05/27/Codeforces-985-E-Pencils-and-Boxes（dp，前缀和优化）/" rel="next" title=" [Codeforces 985.E] Pencils and Boxes（dp，前缀和优化）">
+                <i class="fa fa-chevron-left"></i>  [Codeforces 985.E] Pencils and Boxes（dp，前缀和优化）
               </a>
             
           </div>
@@ -506,10 +525,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/29/ZJOI2008-树的统计（树链剖分，线段树）/" rel="prev" title="[ZJOI2008]树的统计（树链剖分，线段树）">
-                [ZJOI2008]树的统计（树链剖分，线段树） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -751,7 +766,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input"><span class="nav-number">1.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output"><span class="nav-number">1.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.4.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HINT"><span class="nav-number">1.6.</span> <span class="nav-text">HINT</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#F-Rain-and-Umbrellas"><span class="nav-number">1.</span> <span class="nav-text">F. Rain and Umbrellas</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Input"><span class="nav-number">1.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output"><span class="nav-number">1.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Examples"><span class="nav-number">1.3.</span> <span class="nav-text">Examples</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-number">1.4.</span> <span class="nav-text">Note</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
             
 
           </div>
