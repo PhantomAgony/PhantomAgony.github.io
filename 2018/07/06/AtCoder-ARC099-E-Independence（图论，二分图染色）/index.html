@@ -99,25 +99,25 @@
 
 
 
-  <meta name="description" content="搞了一个下午+一个晚上，终于把hexo+github博客搭建起来了……（尚待后续优化） 这个博客用于几个板块：OI/ACM 学习笔记（主要），学习总结，随笔，其他 12break?continue!">
-<meta name="keywords" content="随笔">
+  <meta name="description" content="AtCoder ARC099.E">
+<meta name="keywords" content="AtCoder">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello, world!">
-<meta property="og:url" content="http://yoursite.com/2018/04/07/Hello-world-0/index.html">
+<meta property="og:title" content="[AtCoder ARC099]E - Independence（图论，二分图染色）">
+<meta property="og:url" content="http://yoursite.com/2018/07/06/AtCoder-ARC099-E-Independence（图论，二分图染色）/index.html">
 <meta property="og:site_name" content="PhantomAgony">
-<meta property="og:description" content="搞了一个下午+一个晚上，终于把hexo+github博客搭建起来了……（尚待后续优化） 这个博客用于几个板块：OI/ACM 学习笔记（主要），学习总结，随笔，其他 12break?continue!">
+<meta property="og:description" content="AtCoder ARC099.E">
 <meta property="og:locale" content="_en">
-<meta property="og:updated_time" content="2018-04-29T12:49:00.526Z">
+<meta property="og:updated_time" content="2018-07-06T13:24:48.830Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello, world!">
-<meta name="twitter:description" content="搞了一个下午+一个晚上，终于把hexo+github博客搭建起来了……（尚待后续优化） 这个博客用于几个板块：OI/ACM 学习笔记（主要），学习总结，随笔，其他 12break?continue!">
+<meta name="twitter:title" content="[AtCoder ARC099]E - Independence（图论，二分图染色）">
+<meta name="twitter:description" content="AtCoder ARC099.E">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/07/Hello-world-0/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/06/AtCoder-ARC099-E-Independence（图论，二分图染色）/"/>
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>Hello, world! | PhantomAgony</title>
+  <title>[AtCoder ARC099]E - Independence（图论，二分图染色） | PhantomAgony</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/07/Hello-world-0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/06/AtCoder-ARC099-E-Independence（图论，二分图染色）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="PhantomAgony">
@@ -356,7 +356,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello, world!</h1>
+          <h1 class="post-title" itemprop="name headline">[AtCoder ARC099]E - Independence（图论，二分图染色）</h1>
         
 
         <div class="post-meta">
@@ -368,7 +368,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-07T22:36:40+08:00">2018-04-07</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-06T21:15:55+08:00">2018-07-06</time>
             
 
             
@@ -378,6 +378,38 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/图论/" itemprop="url" rel="index"><span itemprop="name">图论</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/图论/二分图/" itemprop="url" rel="index"><span itemprop="name">二分图</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/图论/二分图/二分图染色/" itemprop="url" rel="index"><span itemprop="name">二分图染色</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -390,6 +422,8 @@
 
           
 
+          
+              <div class="post-description">AtCoder ARC099.E</div>
           
 
         </div>
@@ -405,9 +439,53 @@
       
 
       
-        <p>搞了一个下午+一个晚上，终于把hexo+github博客搭建起来了……（尚待后续优化）</p>
-<p>这个博客用于几个板块：OI/ACM 学习笔记（主要），学习总结，随笔，其他</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">break</span>?</span><br><span class="line"><span class="keyword">continue</span>!</span><br></pre></td></tr></table></figure>
+        <h1 id="E-Independence"><a href="#E-Independence" class="headerlink" title="E - Independence"></a>E - Independence</h1><p>Time limit : 2sec / Memory limit : 1024MB<br>Score : 700 points</p>
+<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p>In the State of Takahashi in AtCoderian Federation, there are $N$ cities, numbered $1,2,…,N$. $M$ bidirectional roads connect these cities. The $i$-th road connects City $A_i$ and City $B_i$. Every road connects two distinct cities. Also, for any two cities, there is at most one road that <strong>directly</strong> connects them.</p>
+<p>One day, it was decided that the State of Takahashi would be divided into two states, Taka and Hashi. After the division, each city in Takahashi would belong to either Taka or Hashi. It is acceptable for all the cities to belong Taka, or for all the cities to belong Hashi. Here, the following condition should be satisfied:</p>
+<ul>
+<li>Any two cities in the same state, Taka or Hashi, are directly connected by a road.</li>
+</ul>
+<p>Find the minimum possible number of roads whose endpoint cities belong to the same state. If it is impossible to divide the cities into Taka and Hashi so that the condition is satisfied, print <code>-1</code>.</p>
+<h2 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints"></a>Constraints</h2><p>$2≤N≤700$<br>$0≤M≤N(N?1)/2$<br>$1≤A_i≤N$<br>$1≤B_i≤N$<br>$A_i≠B_i$<br>If $i≠j$, at least one of the following holds: $A_i≠A_j$ and $B_i≠B_j$.<br>If $i≠j$, at least one of the following holds: $A_i≠B_j$ and $B_i≠A_j$.</p>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>Input is given from Standard Input in the following format:</p>
+<blockquote>
+<p>$N$ $M$<br>$A_1 B_1$<br>$A_2 B_2$<br>:<br>$A_M$ $B_M$</p>
+</blockquote>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>Print the answer.</p>
+<h2 id="Samples"><a href="#Samples" class="headerlink" title="Samples"></a>Samples</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 5<br>1 2<br>1 3<br>3 4<br>3 5<br>4 5</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5 1<br>1 2</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>4 3<br>1 2<br>1 3<br>2 3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>10 39<br>7 2<br>7 1<br>5 6<br>5 8<br>9 10<br>2 8<br>8 7<br>3 10<br>10 1<br>8 10<br>2 3<br>7 4<br>3 9<br>4 10<br>3 4<br>6 1<br>6 7<br>9 5<br>9 7<br>6 9<br>9 4<br>4 6<br>7 5<br>8 3<br>2 5<br>9 2<br>10 7<br>8 6<br>8 9<br>7 3<br>5 3<br>4 5<br>6 3<br>2 10<br>5 10<br>4 2<br>6 2<br>8 4<br>10 6<br></td>
+<td>21</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Sample#1:<br>For example, if the cities 1,2 belong to Taka and the cities 3,4,5 belong to Hashi, the condition is satisfied. Here, the number of roads whose endpoint cities belong to the same state, is 4.</p>
+<p>Sample#2:<br>In this sample, the condition cannot be satisfied regardless of which cities belong to each state.</p>
+<hr>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>题目大意：将一个图分成两个子图，使得每一个子图都是完全图。<br>所有不相连的点不能再一个子图里，那么我们就对这些不相连点进行建边，然后二分图染色（即建立了一个原图的补图）<br>在新图中，同一个连通块中且是相同颜色的点一定在同一个子图里，<strong>而不同连通块中不同颜色的点可以放在一起</strong><br>那么，用一个布尔数组 $s$ 做一个统计，$s[i]$ 表示是否存在大小为 $i$ 的子图，取最小情况即可。</p>
+<hr>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">705</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">490005</span>;</span><br><span class="line"><span class="keyword">int</span> n, m, u, v, ans = <span class="number">0x7fffffff</span>;</span><br><span class="line"><span class="keyword">bool</span> g[N][N], s[N], t[N];</span><br><span class="line"><span class="keyword">int</span> col[N], cnt[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">	col[x] = c;</span><br><span class="line">	cnt[c == <span class="number">1</span>]++;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(i == x || g[x][i])	<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(!col[i])	dfs(i, -c);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(col[i] == c)&#123;</span><br><span class="line">			<span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">			<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;u, &amp;v);</span><br><span class="line">		g[u][v] = g[v][u] = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	s[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(col[i])	<span class="keyword">continue</span>;</span><br><span class="line">		cnt[<span class="number">0</span>] = cnt[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">		dfs(i, <span class="number">1</span>);</span><br><span class="line">		<span class="built_in">memset</span>(t, <span class="number">0</span>, <span class="keyword">sizeof</span> t);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= n; j++)&#123;</span><br><span class="line">			t[j+cnt[<span class="number">0</span>]] |= s[j];</span><br><span class="line">			t[j+cnt[<span class="number">1</span>]] |= s[j];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= n; j++)</span><br><span class="line">			s[j] = t[j];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++)</span><br><span class="line">		<span class="keyword">if</span>(s[i])</span><br><span class="line">			ans = min(ans, i*(i<span class="number">-1</span>)/<span class="number">2</span> + (n-i)*(n-i<span class="number">-1</span>)/<span class="number">2</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -428,7 +506,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/随笔/" rel="tag"># 随笔</a>
+            <a href="/tags/AtCoder/" rel="tag"># AtCoder</a>
           
         </div>
       
@@ -441,8 +519,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/06/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/06/08/轮到我们了/" rel="next" title="轮到我们了">
+                <i class="fa fa-chevron-left"></i> 轮到我们了
               </a>
             
           </div>
@@ -450,10 +528,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/14/NOIP2017-D1-T1-小凯的疑惑（数论）/" rel="prev" title="[NOIP2017 D1 T1]小凯的疑惑（数论）">
-                [NOIP2017 D1 T1]小凯的疑惑（数论） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -502,8 +576,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -680,6 +763,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#E-Independence"><span class="nav-number">1.</span> <span class="nav-text">E - Independence</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-Statement"><span class="nav-number">1.1.</span> <span class="nav-text">Problem Statement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Constraints"><span class="nav-number">1.2.</span> <span class="nav-text">Constraints</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input"><span class="nav-number">1.3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output"><span class="nav-number">1.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Samples"><span class="nav-number">1.5.</span> <span class="nav-text">Samples</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1173,7 +1272,45 @@
         onPopupClose();
       }
     });
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1192,22 +1329,7 @@
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
 
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
+    
   
 
 
