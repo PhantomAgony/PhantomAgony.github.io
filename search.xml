@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[[ZJOI2005]午餐（dp，贪心）]]></title>
+    <url>%2F2018%2F08%2F21%2FZJOI2005-%E5%8D%88%E9%A4%90%EF%BC%88dp%EF%BC%8C%E8%B4%AA%E5%BF%83%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[题目描述上午的训练结束了，THU ACM小组集体去吃午餐，他们一行N人来到了著名的十食堂。这里有两个打饭的窗口，每个窗口同一时刻只能给一个人打饭。由于每个人的口味（以及胃口）不同，所以他们要吃的菜各有不同，打饭所要花费的时间是因人而异的。另外每个人吃饭的速度也不尽相同，所以吃饭花费的时间也是可能有所不同的。 THU ACM小组的吃饭计划是这样的：先把所有的人分成两队，并安排好每队中各人的排列顺序，然后一号队伍到一号窗口去排队打饭，二号队伍到二号窗口去排队打饭。每个人打完饭后立刻开始吃，所有人都吃完饭后立刻集合去六教地下室进行下午的训练。 现在给定了每个人的打饭时间和吃饭时间，要求安排一种最佳的分队和排队方案使得所有人都吃完饭的时间尽量早。 假设THU ACM小组在时刻0到达十食堂，而且食堂里面没有其他吃饭的同学（只有打饭的师傅）。每个人必须而且只能被分在一个队伍里。两个窗口是并行操作互不影响的，而且每个人打饭的时间是和窗口无关的，打完饭之后立刻就开始吃饭，中间没有延迟。 现在给定N个人各自的打饭时间和吃饭时间，要求输出最佳方案下所有人吃完饭的时刻。 输入第一行一个整数N，代表总共有N个人。 以下N行，每行两个整数 Ai，Bi。依次代表第i个人的打饭时间和吃饭时间。 输出一个整数T，代表所有人吃完饭的最早时刻。 输入样例12345652 27 71 36 48 5 输出样例117 说明所有输入数据均为不超过200的正整数。 解题思路乍一看人的顺序不定，好像无从下手，这时就需要靠贪心排一个序。先考虑只有一个窗口的情况：画一个图（蓝色打饭时间，绿色吃饭时间）容易发现答案是所有打饭时间之和（定值）加上虚线右边支出来的一截的最大长度，所以我们要尽量让支出来的长度小。这可以贪心实现，并且贪心策略很简单：按吃饭时间从大到小排序即可。因为吃饭时间长的就更容易支出去，理所当然的应该尽可能往前放。 所以其实一个窗口的答案是可以通过贪心排序确定下来的，那么现在题目的变数就只有两个窗口如何选择了，我们就此dp。dp状态里，我们显然需要知道已经排到第几个人了，还要知道两个队伍的信息。综合考虑后发现，我们只需要第一个队伍总共打饭时间即可，因为哪些人去了第一个队伍并不重要，此时我们可以通过简单计算算出第二个队伍总共打饭时间，于是我们定义 $dp[i][j]$ 为前 $i$ 个人中，第一个队伍总共打饭时间为 $j$ 的最小集合时间。由此推出： dp状态：$dp[i][j]$ 为前 $i$ 个人中，第一个队伍总共打饭时间为 $j$ 的最小集合时间 dp方程：$dp[i][j] = min( max(dp[i-1][j-p[i].a], j + p[i].b), max(dp[i-1][j], sum[i] - j + p[i].b) );$即分别考虑第 $i$ 个去第一个还是第二个窗口。$sum[i]$ 表示前 $i$ 个人的总共打饭时间 dp顺序：由转移方程可得：依次for i = 1 to n，for j = 0 to sum[i] 即可 边界条件：dp[0][0] = 0，其他初始状态为INF 时间复杂度：$O(N^3)$ Code123456789101112131415161718192021222324252627282930313233343536#include&lt;bits/stdc++.h&gt;using namespace std;//此处省略了 define 的一些东西和输入输出优化const int N = 205;const int INF = 1e9;int n, dp[N][N*N], sum[N], ans = INF;struct Person&#123; int a, b;&#125;p[N];bool cmp(Person x, Person y)&#123; return x.b &gt; y.b; &#125;int main()&#123; in(n); fo1(i, 1, n)&#123; in(p[i].a); in(p[i].b); &#125; sort(p+1, p+n+1, cmp); mset(dp, 0x3f); dp[0][0] = 0; fo1(i, 1, n)&#123; sum[i] = sum[i-1] + p[i].a; fo1(j, 0, sum[i])&#123; if(j &gt;= p[i].a) dp[i][j] = min(dp[i][j], max(dp[i-1][j-p[i].a], j + p[i].b)); dp[i][j] = min(dp[i][j], max(dp[i-1][j], sum[i] - j + p[i].b)); &#125; &#125; fo1(i, 0, sum[n]) ans = min(ans, dp[n][i]); outln(ans); return 0;&#125;]]></content>
+      <categories>
+        <category>动态规划</category>
+        <category>贪心</category>
+        <category>排序</category>
+      </categories>
+      <tags>
+        <tag>ZJOI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[[Codeforces 1023.E]Down or Right（交互题）]]></title>
     <url>%2F2018%2F08%2F19%2FCodeforces-1023-E-Down-or-Right%EF%BC%88%E4%BA%A4%E4%BA%92%E9%A2%98%EF%BC%89%2F</url>
     <content type="text"><![CDATA[E. Down or Righttime limit per test: 1 secondmemory limit per test: 256 megabytesinput: standard inputoutput: standard outputThis is an interactive problem. Bob lives in a square grid of size $n×n$, with rows numbered $1$ through $n$ from top to bottom, and columns numbered $1$ through $n$ from left to right. Every cell is either allowed or blocked, but you don’t know the exact description of the grid. You are given only an integer $n$.Bob can move through allowed cells but only in some limited directions. When Bob is in an allowed cell in the grid, he can move down or right to an adjacent cell, if it is allowed.You can ask at most $4\cdot n$ queries of form “? $r_1$ $c_1$ $r_2$ $c_2$” ($1≤r_1≤r_2≤n$, $1≤c_1≤c_2≤n$). The answer will be “YES” if Bob can get from a cell $(r_1,c_1)$ to a cell $(r_2,c_2)$, and “NO” otherwise. In particular, if one of the two cells (or both) is a blocked cell then the answer is “NO” for sure. Since Bob doesn’t like short trips, you can only ask queries with the manhattan distance between the two cells at least $n-1$, i.e. the following condition must be satisfied: $(r_2-r_1)+(c_2-c_1)≥n-1$.It’s guaranteed that Bob can get from the top-left corner $(1,1)$ to the bottom-right corner $(n,n)$ and your task is to find a way to do it. You should print the answer in form “! S” where $S$ is a string of length $2\cdot n-2$ consisting of characters ‘D’ and ‘R’, denoting moves down and right respectively. The down move increases the first coordinate by $1$, the right move increases the second coordinate by $1$. If there are multiple solutions, any of them will be accepted. You should terminate immediately after printing the solution. InputThe only line of the input contains an integer $n$ $(2≤n≤500)$ — the size of the grid. OutputWhen you are ready to print the answer, print a single line containing “! S” where where $S$ is a string of length $2\cdot n-2$ consisting of characters ‘D’ and ‘R’, denoting moves down and right respectively. The path should be a valid path going from the cell $(1,1)$ to the cell $(n,n)$ passing only through allowed cells. InteractionYou can ask at most $4\cdot n$ queries. To ask a query, print a line containing “? $r_1$ $c_1$ $r_2$ $c_2$” ($1≤r_1≤r_2≤n$, $1≤c_1≤c_2≤n$). After that you should read a single line containing “YES” or “NO” depending on the answer of the query. “YES” means Bob can go from the cell $(r_1,c_1)$ to the cell $(r_2,c_2)$, “NO” means the opposite. Note that the grid is fixed before the start of your solution and does not depend on your queries. After printing a query do not forget to output end of line and flush the output. Otherwise you will get Idleness limit exceeded or other negative verdict. To do this, use: fflush(stdout) or cout.flush() in C++; System.out.flush() in Java; flush(output) in Pascal; stdout.flush() in Python; see documentation for other languages. Answer “BAD” instead of “YES” or “NO” means that you made an invalid query. Exit immediately after receiving “BAD” and you will see Wrong answer verdict. Otherwise you can get an arbitrary verdict because your solution will continue to read from a closed stream. Example input output 4YESNOYESYES ? 1 1 4 4? 1 2 4 3? 4 1 4 4? 1 4 4 4! RDRRDD 解题思路从 $(1,1)$ 尽可能向下走，即询问? x y n n，到达对角线为止；再从 $(n,n)$ 尽可能向左走，即询问? 1 1 x y，到达对角线为止。这样，两次到达的对角线一定是同一个点。询问次数为 $2\cdot n$。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263#include&lt;bits/stdc++.h&gt;using namespace std;int n;char ans[5];vector&lt;char&gt; v1, v2;inline bool ask(int r1, int c1, int r2, int c2)&#123; printf("? %d %d %d %d\n", r1, c1, r2, c2); fflush(stdout); scanf("%s", ans); return ans[0] == 'Y';&#125;inline bool can(int r1, int c1, int r2, int c2)&#123; return r1 &gt;= 1 &amp;&amp; r1 &lt;= n &amp;&amp; c1 &gt;= 1 &amp;&amp; c1 &lt;= n &amp;&amp; r2 &gt;= 1 &amp;&amp; r2 &lt;= n &amp;&amp; c2 &gt;= 1 &amp;&amp; c2 &lt;= n &amp;&amp; (r2 - r1) + (c2 - c1) &gt;= n - 1;&#125;int main()&#123; scanf("%d", &amp;n); int nowx = 1, nowy = 1; while(nowx + nowy &lt; n + 1)&#123; if(nowx &lt; n)&#123; if(ask(nowx + 1, nowy, n, n))&#123; nowx++; v1.push_back('D'); &#125; else&#123; nowy++; v1.push_back('R'); &#125; &#125; else&#123; nowy++; v1.push_back('R'); &#125; &#125; nowx = nowy = n; while(nowx + nowy &gt; n + 1)&#123; if(nowy &gt; 1)&#123; if(ask(1, 1, nowx, nowy - 1))&#123; nowy--; v2.push_back('R'); &#125; else&#123; nowx--; v2.push_back('D'); &#125; &#125; else&#123; nowx--; v2.push_back('D'); &#125; &#125; printf("! "); for(int i = 0; i &lt; v1.size(); i++) putchar(v1[i]); for(int i = v2.size() - 1; i &gt;= 0; i--) putchar(v2[i]); putchar(10); return 0;&#125;]]></content>
@@ -23,11 +36,12 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[[luogu P1417]烹调方案（排序，背包）]]></title>
-    <url>%2F2018%2F08%2F12%2Fluogu-P1417-%E7%83%B9%E8%B0%83%E6%96%B9%E6%A1%88%EF%BC%88%E6%8E%92%E5%BA%8F%EF%BC%8C%E8%83%8C%E5%8C%85%EF%BC%89%2F</url>
+    <title><![CDATA[[luogu P1417]烹调方案（贪心，排序，背包）]]></title>
+    <url>%2F2018%2F08%2F12%2Fluogu-P1417-%E7%83%B9%E8%B0%83%E6%96%B9%E6%A1%88%EF%BC%88%E8%B4%AA%E5%BF%83%EF%BC%8C%E6%8E%92%E5%BA%8F%EF%BC%8C%E8%83%8C%E5%8C%85%EF%BC%89%2F</url>
     <content type="text"><![CDATA[题目题目背景由于你的帮助，火星只遭受了最小的损失。但gw懒得重建家园了，就造了一艘飞船飞向遥远的earth星。不过飞船飞到一半，gw发现了一个很严重的问题：肚子饿了~ gw还是会做饭的，于是拿出了储藏的食物准备填饱肚子。gw希望能在T时间内做出最美味的食物，但是这些食物美味程度的计算方式比较奇葩，于是绝望的gw只好求助于你了。 题目描述一共有n件食材，每件食材有三个属性，ai，bi和ci，如果在t时刻完成第i样食材则得到ai-t*bi的美味指数，用第i件食材做饭要花去ci的时间。 众所周知，gw的厨艺不怎么样，所以他需要你设计烹调方案使得美味指数最大 输入输出格式输入格式：第一行是两个正整数T和n，表示到达地球所需时间和食材个数。 下面一行n个整数，ai 下面一行n个整数，bi 下面一行n个整数，ci 输出格式：输出最大美味指数 输入输出样例输入样例#1：123474 1502247 输出样例#1：1408 说明【数据范围】 对于40%的数据1&lt;=n&lt;=10 对于100%的数据1&lt;=n&lt;=50 所有数字均小于100,000 【题目来源】 tinylic改编 解题思路看起来很像一个0-1背包，但是……每个物品的价值在变。注意到价值的变化与物品的顺序有关，考虑两个相邻物品 $x$ 和 $y$，如果 $x$ 在前 $y$ 在后，那么他俩价值就是 a[x]-(p+c[x])*b[x]+a[y]-(p+c[x]+c[y])*b[y]同理，如果 $y$ 在前 $x$ 在后，那么价值是 a[y]-(p+c[y])*b[y]+a[x]-(p+c[x]+c[y])*b[x]二者比较大小，化简后得到 $x$ 在前 $y$ 在后更优的充要条件是 b[x]*c[y] > b[y]*c[x]所以我们就按它对物品先进行排序，接着挨个考虑是否使用某物品，也就是0-1背包了。 坑：注意开 long long Code1234567891011121314151617181920212223242526272829303132#include&lt;cstdio&gt;#include&lt;algorithm&gt;using namespace std;typedef long long LL;int T, n;LL dp[100005], ans;struct Food&#123; int a, b, c;&#125;f[55];bool cmp(Food x, Food y)&#123; return 1ll * x.b * y.c &gt; 1ll * y.b * x.c;&#125;int main()&#123; scanf("%d%d", &amp;T, &amp;n); for(int i = 1; i &lt;= n; i++) scanf("%d", &amp;f[i].a); for(int i = 1; i &lt;= n; i++) scanf("%d", &amp;f[i].b); for(int i = 1; i &lt;= n; i++) scanf("%d", &amp;f[i].c); sort(f+1, f+n+1, cmp); for(int i = 1; i &lt;= n; i++) for(int j = T; j &gt;= 0; j--) if(j &gt;= f[i].c) dp[j] = max(dp[j], dp[j-f[i].c]+1ll*(f[i].a-1ll*j*f[i].b)); for(int i = 1; i &lt;= T; i++) ans = max(ans, dp[i]); printf("%lld\n", ans); return 0;&#125;]]></content>
       <categories>
         <category>动态规划</category>
+        <category>贪心</category>
         <category>排序</category>
         <category>背包</category>
         <category>0-1背包</category>
@@ -107,8 +121,8 @@
       <categories>
         <category>图论</category>
         <category>二分图</category>
-        <category>二分图匹配</category>
         <category>网络流</category>
+        <category>二分图匹配</category>
         <category>最大流/最小割</category>
       </categories>
       <tags>
@@ -122,8 +136,8 @@
       <categories>
         <category>图论</category>
         <category>二分图</category>
-        <category>二分图匹配</category>
         <category>网络流</category>
+        <category>二分图匹配</category>
         <category>最大流/最小割</category>
       </categories>
       <tags>
